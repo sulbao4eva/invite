@@ -41,6 +41,20 @@
 
   <main id="invitation" class="stationery" tabindex="-1">
     <div class="paper-border" aria-hidden="true"></div>
+    <div class="falling-petals" aria-hidden="true">
+      <span class="petal-path" style="--x:2%;--size:10px;--fall:19s;--delay:-5s;--drift:9px;--sway:4s"><i></i></span>
+      <span class="petal-path" style="--x:5%;--size:15px;--fall:23s;--delay:-16s;--drift:-5px;--sway:5s"><i></i></span>
+      <span class="petal-path" style="--x:9%;--size:9px;--fall:16s;--delay:-10s;--drift:8px;--sway:3.8s"><i></i></span>
+      <span class="petal-path" style="--x:13%;--size:12px;--fall:21s;--delay:-2s;--drift:-8px;--sway:4.6s"><i></i></span>
+      <span class="petal-path" style="--x:17%;--size:8px;--fall:18s;--delay:-14s;--drift:5px;--sway:4.2s"><i></i></span>
+      <span class="petal-path" style="--x:21%;--size:13px;--fall:22s;--delay:-8s;--drift:-7px;--sway:5.2s"><i></i></span>
+      <span class="petal-path" style="--x:78%;--size:11px;--fall:20s;--delay:-12s;--drift:6px;--sway:4.5s"><i></i></span>
+      <span class="petal-path" style="--x:82%;--size:8px;--fall:17s;--delay:-4s;--drift:-9px;--sway:3.9s"><i></i></span>
+      <span class="petal-path" style="--x:86%;--size:14px;--fall:24s;--delay:-19s;--drift:4px;--sway:5.3s"><i></i></span>
+      <span class="petal-path" style="--x:90%;--size:10px;--fall:19.5s;--delay:-9s;--drift:-6px;--sway:4.3s"><i></i></span>
+      <span class="petal-path" style="--x:94%;--size:12px;--fall:22.5s;--delay:-1s;--drift:5px;--sway:4.8s"><i></i></span>
+      <span class="petal-path" style="--x:97%;--size:9px;--fall:18.5s;--delay:-13s;--drift:-7px;--sway:4.1s"><i></i></span>
+    </div>
     <img class="floral floral-left" src="./assets/floral.svg" alt="" width="270" height="780">
     <img class="floral floral-right" src="./assets/floral.svg" alt="" width="270" height="780">
     <header class="invitation-heading reveal">
@@ -61,9 +75,9 @@
     <section class="invitation-message reveal" aria-label="Your invitation">
       <div class="small-ornament" aria-hidden="true">✧</div>
       <p class="message">
-        <span class="message-line">You're cordially invited to</span>
-        <span class="message-line">Bao & Sul's Wedding</span>
-        <span class="message-line">on 17th April 2027</span>
+        <span class="message-line message-intro">You're cordially invited to</span>
+        <span class="message-line message-names">Bao & Sul's Wedding</span>
+        <span class="message-line message-date">on 17th April 2027</span>
       </p>
       <a class="rsvp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdyNJ41q6z1uOLgclUNu17-cXtvdMMqA6ggc3y7JIrBnq-Zaw/viewform" target="_blank" rel="noopener noreferrer">Click here to RSVP</a>
       <div class="qr-block">
@@ -73,12 +87,15 @@
       <details class="calendar-save">
         <summary>Click here to save to calendar</summary>
         <div class="calendar-options">
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Bao%20%26%20Sul%27s%20Wedding&amp;dates=20270417%2F20270418&amp;details=https%3A%2F%2Fsulbao4eva.github.io%2Fbao-sul-wedding%2F" target="_blank" rel="noopener noreferrer">Google Calendar <span aria-hidden="true">↗</span></a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Bao%20%26%20Sul%27s%20Wedding&amp;dates=20270417%2F20270418&amp;ctz=Asia%2FSingapore&amp;details=You%27re%20cordially%20invited%20to%0ABao%20%26%20Sul%27s%20Wedding%0Aon%2017th%20April%202027%0A%0Ahttps%3A%2F%2Fsulbao4eva.github.io%2Fbao-sul-wedding%2F" target="_blank" rel="noopener noreferrer">Google Calendar <span aria-hidden="true">↗</span></a>
           <a href="./assets/bao-sul-wedding.ics" download="bao-sul-wedding.ics">Apple, Outlook & other calendars <span aria-hidden="true">↓</span></a>
         </div>
       </details>
     </section>
-    <footer class="signature reveal" aria-label="With love, Bao and Sul"><span aria-hidden="true">B <i>&</i> S</span></footer>
+    <footer class="signature reveal" aria-label="With love, Bao and Sul">
+      <span aria-hidden="true">B <i>&</i> S</span>
+      <label class="petal-control"><input id="petals-paused" type="checkbox"> Pause petals</label>
+    </footer>
   </main>
 </body>
 </html>

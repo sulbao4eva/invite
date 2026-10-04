@@ -2,12 +2,15 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Bao and Sul//Wedding Invitation//EN
 CALSCALE:GREGORIAN
+X-WR-TIMEZONE:Asia/Singapore
 BEGIN:VEVENT
-UID:bao-sul-wedding-20270417@sulbao4eva.github.io
-DTSTAMP:20261004T131503Z
+SUMMARY:Bao & Sul's Wedding
 DTSTART;VALUE=DATE:20270417
 DTEND;VALUE=DATE:20270418
-SUMMARY:Bao & Sul's Wedding
+DTSTAMP:20261004T132706Z
+UID:bao-sul-wedding-20270417@sulbao4eva.github.io
+DESCRIPTION:You're cordially invited to\nBao & Sul's Wedding\non 17th Apri
+ l 2027\n\nhttps://sulbao4eva.github.io/bao-sul-wedding/
 URL:https://sulbao4eva.github.io/bao-sul-wedding/
 END:VEVENT
 END:VCALENDAR

@@ -20,7 +20,7 @@ The current source form, `RSVP_test`, is available anonymously and asks only whe
 
 ## Save to calendar
 
-The link below the QR code opens a choice of Google Calendar or a downloadable iCalendar file for Apple, Outlook, and other calendars. Both prefill `Bao & Sul's Wedding` as an all-day event on **17 April 2027**. No event time or venue has been supplied. Guests confirm saving in their chosen calendar application.
+The link below the QR code opens a choice of Google Calendar or a downloadable iCalendar file for Apple, Outlook, and other calendars. Both prefill `Bao & Sul's Wedding` as an all-day event on **17 April 2027**, with the invitation text and website URL as the description. Google Calendar uses `Asia/Singapore`; the calendar file declares the same calendar timezone. All-day dates have no timezone-specific start or end time. No event time or venue has been supplied; these missing details must be confirmed before converting this to a timed event. Guests confirm saving in their chosen calendar application.
 
 To change the calendar date, update the Google Calendar URL in `index.html` and `DTSTART` / `DTEND` in `assets/bao-sul-wedding.ics`. The end date for a one-day all-day event is the following day. Keep both options consistent.
 
@@ -35,3 +35,7 @@ GitHub Pages should publish from **main / (root)**. `.nojekyll` disables unneces
 The invitation is ordinary readable HTML and remains visible without JavaScript. With JavaScript, essential image and font readiness starts a 5.1-second envelope sequence. Guests can skip using the visible control or Escape. Reduced-motion visitors see the invitation immediately. A bounded readiness wait and an independent 10-second fallback protect against slow assets or a failed script. Links have visible keyboard focus and open the public Google Form in a new tab.
 
 Cormorant Garamond is bundled locally under the SIL Open Font License; see `assets/FONT-LICENSE.txt`. Floral artwork, the monogram, and the paper texture are lightweight local SVG files.
+
+## Falling cherry blossoms
+
+Lightweight CSS petals drift continuously along the page edges after the envelope opens. They sit behind the photographs and RSVP content, ignore pointer events, and never cover the QR code. The footer has a keyboard-accessible **Pause petals** checkbox that also works without JavaScript. Reduced-motion visitors see no falling animation.
