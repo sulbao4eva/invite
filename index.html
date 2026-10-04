@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4ec">
+  <meta name="description" content="You're cordially invited to Bao & Sul's Wedding on 17 April 2027.">
+  <title>Bao & Sul | Wedding Invitation</title>
+  <link rel="icon" href="./assets/monogram.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    // Enhancement only: the complete invitation is visible without JavaScript.
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('intro-active');
+      window.invitationFallback = setTimeout(function () {
+        document.documentElement.classList.remove('intro-active', 'opening');
+        var main = document.getElementById('invitation');
+        if (main) { main.inert = false; main.removeAttribute('aria-hidden'); }
+        var intro = document.getElementById('intro');
+        if (intro && intro.contains(document.activeElement)) main.focus({preventScroll: true});
+      }, 10000);
+    }
+  </script>
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Opening Bao and Sul's wedding invitation">
+    <button id="skip" class="skip" type="button">Skip animation <span aria-hidden="true">↗</span></button>
+    <div class="envelope-scene" aria-hidden="true">
+      <div class="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-card"><span class="mini-heading">THE WEDDING OF</span><span class="card-names">Bao <i>&</i> Sul</span><span class="card-date">17 APRIL 2027</span></div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap"></div>
+        <div class="seal">B<span>&</span>S</div>
+        <div class="envelope-names">Bao & Sul</div>
+      </div>
+    </div>
+  </div>
+
+  <main id="invitation" class="stationery" tabindex="-1">
+    <div class="paper-border" aria-hidden="true"></div>
+    <img class="floral floral-left" src="./assets/floral.svg" alt="" width="270" height="780">
+    <img class="floral floral-right" src="./assets/floral.svg" alt="" width="270" height="780">
+    <header class="invitation-heading reveal">
+      <div class="ornament" aria-hidden="true"><span></span>✧<span></span></div>
+      <p class="eyebrow">THE WEDDING OF</p>
+      <h1>Bao <span class="ampersand">&</span> Sul</h1>
+      <p class="wedding-date"><span>17</span><span>APRIL</span><span>2027</span></p>
+    </header>
+
+    <div class="photo-collage reveal" aria-label="Photographs of Bao and Sul">
+      <figure class="photo photo-left"><img src="./assets/together-640.webp" srcset="./assets/together-640.webp 640w, ./assets/together-1280.webp 1280w" sizes="(max-width: 600px) 43vw, 320px" width="1280" height="853" alt="Bao and Sul leaning together and smiling." fetchpriority="high"></figure>
+      <figure class="photo photo-centre"><img src="./assets/portrait-1280.webp" srcset="./assets/portrait-640.webp 640w, ./assets/portrait-1280.webp 1280w" sizes="(max-width: 600px) 82vw, 460px" width="1280" height="853" alt="Bao and Sul smiling side by side against a blue backdrop." fetchpriority="high"></figure>
+      <figure class="photo photo-right"><img src="./assets/joy-640.webp" srcset="./assets/joy-640.webp 640w, ./assets/joy-1280.webp 1280w" sizes="(max-width: 600px) 43vw, 320px" width="1280" height="853" alt="Bao and Sul sharing a playful moment, with Sul making a peace sign."></figure>
+    </div>
+
+    <section class="invitation-message reveal" aria-label="Your invitation">
+      <div class="small-ornament" aria-hidden="true">✧</div>
+      <p class="message">You're cordially invited to Bao & Sul's Wedding on 17 April 2027.</p>
+      <a class="rsvp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdyNJ41q6z1uOLgclUNu17-cXtvdMMqA6ggc3y7JIrBnq-Zaw/viewform" target="_blank" rel="noopener noreferrer">Click here to RSVP</a>
+      <div class="qr-block">
+        <a class="qr-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdyNJ41q6z1uOLgclUNu17-cXtvdMMqA6ggc3y7JIrBnq-Zaw/viewform" target="_blank" rel="noopener noreferrer" aria-label="Open the RSVP Google Form in a new tab"><img src="./assets/rsvp-qr.png" alt="QR code for the wedding RSVP Google Form." width="1600" height="1600"></a>
+        <p class="qr-caption">Scan or tap to RSVP</p>
+      </div>
+    </section>
+    <footer class="signature reveal" aria-label="With love, Bao and Sul"><span aria-hidden="true">B <i>&</i> S</span></footer>
+  </main>
+</body>
+</html>
