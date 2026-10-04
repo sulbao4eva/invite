@@ -8,7 +8,7 @@
   <title>Bao & Sul | Wedding Invitation</title>
   <link rel="icon" href="./assets/monogram.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/fonts.css">
-  <link rel="stylesheet" href="./styles.css?v=20261004-mobile2">
+  <link rel="stylesheet" href="./styles.css?v=20261004-motion3">
   <script>
     // Enhancement only: the complete invitation is visible without JavaScript.
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -22,7 +22,7 @@
       }, 10000);
     }
   </script>
-  <script src="./script.js?v=20261004-mobile2" defer></script>
+  <script src="./script.js?v=20261004-motion3" defer></script>
 </head>
 <body>
   <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Opening Bao and Sul's wedding invitation">
@@ -87,6 +87,10 @@
       <p class="eyebrow">THE WEDDING OF</p>
       <h1>Bao <span class="ampersand">&</span> Sul</h1>
       <p class="wedding-date"><span>17</span><span>APRIL</span><span>2027</span></p>
+      <div id="motion-notice" class="motion-notice" hidden>
+        <p>Animations are paused to respect your motion setting.</p>
+        <button id="play-animations" class="motion-control" type="button">Play animations</button>
+      </div>
     </header>
 
     <div class="photo-collage reveal" aria-label="Photographs of Bao and Sul">

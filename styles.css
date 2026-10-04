@@ -65,6 +65,9 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 .signature{position:relative;z-index:3;font-family:var(--serif);font-size:22px;letter-spacing:.12em;color:#826c47;margin-top:40px}
 .signature i{font-weight:400;font-size:.8em}
 .petal-control{display:flex;align-items:center;justify-content:center;gap:7px;width:fit-content;min-height:44px;margin:10px auto 0;padding:8px 12px;font:11px system-ui;letter-spacing:.02em;color:#6f6656;background:var(--paper);cursor:pointer}
+.motion-notice{margin:14px auto 0;max-width:320px;color:#6f6656;font:11px/1.6 system-ui}
+.motion-notice p{margin:0}
+.motion-notice .motion-control{font-size:12px;border:1px solid var(--line);margin-top:7px}
 .motion-control{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;background:var(--paper);border:0;color:#6f6656;font:11px system-ui;letter-spacing:.02em;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .petal-control input{accent-color:#84704d;width:14px;height:14px;margin:0}
 .petal-control input:focus-visible{outline:3px solid #654f2e;outline-offset:4px}

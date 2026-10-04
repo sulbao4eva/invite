@@ -5,10 +5,13 @@
   const intro = document.getElementById('intro');
   const skip = document.getElementById('skip');
   const replay = document.getElementById('replay');
+  const motionNotice = document.getElementById('motion-notice');
+  const play = document.getElementById('play-animations');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let finished = true;
   let finishTimer;
   let run = 0;
+  let ready = false;
 
   function finish() {
     if (finished) return;
@@ -30,6 +33,8 @@
       document.getElementById('petals-paused').checked = false;
     }
     finished = false;
+    ready = false;
+    clearTimeout(finishTimer);
     const currentRun = ++run;
     root.classList.remove('opening');
     root.classList.add('intro-active');
@@ -37,27 +42,37 @@
     main.setAttribute('aria-hidden', 'true');
     if (userRequested) skip.focus({ preventScroll: true });
     clearTimeout(window.invitationFallback);
-    window.invitationFallback = setTimeout(finish, 10000);
     // The envelope is drawn in CSS. Photos can load during its opening;
     // a slow font gets a serif fallback rather than skipping the animation.
     const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
     const deadline = new Promise(resolve => setTimeout(resolve, 500));
     Promise.race([fontsReady, deadline]).then(() => {
       if (finished || currentRun !== run) return;
-      // Flush the closed state so replay also restarts CSS animations in Safari.
-      void intro.offsetWidth;
-      root.classList.add('opening');
-      finishTimer = setTimeout(finish, 5100);
+      ready = true;
+      beginWhenVisible();
     }).catch(finish);
   }
 
+  function beginWhenVisible() {
+    if (finished || !ready || document.hidden || root.classList.contains('opening')) return;
+    // Start the sequence's clocks only when it can actually be seen.
+    // Completion is timer-based; no animationend/transitionend event is required.
+    void intro.offsetWidth;
+    root.classList.add('opening');
+    finishTimer = setTimeout(finish, 5100);
+    window.invitationFallback = setTimeout(finish, 10000);
+  }
+
   function updateReplay() {
-    replay.textContent = reducedMotion.matches && !root.classList.contains('motion-enabled')
-      ? 'Play invitation & petals' : 'Replay invitation';
+    const needsOptIn = reducedMotion.matches && !root.classList.contains('motion-enabled');
+    motionNotice.hidden = !needsOptIn;
+    replay.textContent = needsOptIn ? 'Play animations' : 'Replay invitation';
   }
   replay.hidden = false;
   updateReplay();
-  replay.addEventListener('click', () => { start(true); updateReplay(); });
+  function playAnimations() { start(true); updateReplay(); }
+  replay.addEventListener('click', playAnimations);
+  play.addEventListener('click', playAnimations);
   skip.addEventListener('click', finish);
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') finish();
@@ -71,7 +86,15 @@
   if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', motionChanged);
   else reducedMotion.addListener(motionChanged);
   // A page restored from Safari's back/forward cache should remain usable.
-  window.addEventListener('pageshow', event => { if (event.persisted) finish(); });
+  window.addEventListener('pagehide', finish);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) finish();
+    else beginWhenVisible();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && root.classList.contains('opening')) finish();
+    else if (!document.hidden) beginWhenVisible();
+  });
   if (root.classList.contains('intro-active')) start();
 })();
 
@@ -83,7 +106,11 @@
   const root = document.documentElement;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (!canvas || !layer || !pause) return;
-  const context = canvas.getContext('2d');
+  function getContext(element) {
+    try { return element.getContext('2d'); }
+    catch (_) { return null; }
+  }
+  const context = getContext(canvas);
   if (!context) return; // The larger CSS petals remain a decorative fallback.
 
   const seeds = Array.from(layer.querySelectorAll('.petal-path'), element => {
@@ -118,7 +145,8 @@
   const sprites = Array.from({ length: 6 }, (_, index) => {
     const sprite = document.createElement('canvas');
     sprite.width = sprite.height = 64;
-    const brush = sprite.getContext('2d');
+    const brush = getContext(sprite);
+    if (!brush) return null;
     const tint = index % 2 ? '#dfacb9' : '#e4b8c1';
     const gradient = brush.createRadialGradient(24, 21, 2, 32, 32, 31);
     gradient.addColorStop(0, '#fff5f0');
@@ -135,6 +163,8 @@
     brush.fill();
     return sprite;
   });
+
+  if (sprites.some(sprite => !sprite)) return;
 
   // Keep the fixed canvas out of hidden/transformed invitation ancestors.
   // Safari can otherwise clip it or keep an obsolete compositing layer.
@@ -153,16 +183,34 @@
   let elapsed = 0;
   let previous = 0;
   let frame = 0;
+  let canvasAvailable = true;
+
+  function stop() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    previous = 0;
+  }
+
+  function useFallback() {
+    canvasAvailable = false;
+    stop();
+    root.classList.remove('petals-enhanced');
+    // The existing CSS petals remain below protected invitation content.
+    document.getElementById('invitation').prepend(layer);
+  }
 
   function resize() {
-    width = layer.clientWidth || window.innerWidth;
-    height = layer.clientHeight || window.innerHeight;
-    measureContent();
-    const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
-    canvas.width = Math.round(width * ratio);
-    canvas.height = Math.round(height * ratio);
-    context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    draw();
+    if (!canvasAvailable) return;
+    try {
+      width = layer.clientWidth || window.innerWidth;
+      height = layer.clientHeight || window.innerHeight;
+      measureContent();
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      draw();
+    } catch (_) { useFallback(); }
   }
 
   function draw() {
@@ -198,21 +246,23 @@
   }
 
   function tick(time) {
+    frame = 0;
+    if (!canvasAvailable) return;
     if (previous) elapsed += Math.min((time - previous) / 1000, 0.05);
     previous = time;
-    draw();
+    try { draw(); }
+    catch (_) { useFallback(); return; }
     frame = requestAnimationFrame(tick);
   }
 
   function sync() {
-    const stopped = (motion.matches && !root.classList.contains('motion-enabled')) || pause.checked || document.hidden ||
+    const stopped = !canvasAvailable || (motion.matches && !root.classList.contains('motion-enabled')) || pause.checked || document.hidden ||
       root.classList.contains('intro-active');
     if (stopped) {
-      cancelAnimationFrame(frame);
-      frame = 0;
-      previous = 0;
+      stop();
     } else if (!frame) {
       resize();
+      if (!canvasAvailable) return;
       root.classList.add('petals-enhanced');
       frame = requestAnimationFrame(tick);
     }
@@ -224,7 +274,18 @@
   document.addEventListener('visibilitychange', sync);
   window.addEventListener('resize', resize, { passive: true });
   window.addEventListener('orientationchange', resize, { passive: true });
-  window.addEventListener('pageshow', () => { resize(); sync(); });
+  window.addEventListener('pagehide', stop);
+  window.addEventListener('pageshow', () => {
+    // A page cache may discard a queued frame while retaining its old ID.
+    // Cancel/reset before resuming so there is exactly one live RAF chain.
+    stop(); resize(); sync();
+  });
+  canvas.addEventListener('contextlost', useFallback);
+  canvas.addEventListener('contextrestored', () => {
+    canvasAvailable = true;
+    document.body.appendChild(layer);
+    resize(); sync();
+  });
   window.addEventListener('scroll', measureContent, { passive: true });
   if (window.visualViewport) window.visualViewport.addEventListener('resize', resize, { passive: true });
   document.querySelector('.calendar-save').addEventListener('toggle', measureContent);
