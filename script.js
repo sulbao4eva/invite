@@ -39,10 +39,11 @@
     });
   });
   // Slow networks must never leave guests stranded behind an opening screen.
-  const deadline = new Promise(resolve => setTimeout(resolve, 2500));
+  const deadline = new Promise(resolve => setTimeout(() => resolve('timeout'), 2500));
   const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-  Promise.race([Promise.all([...imagesReady, fontsReady]), deadline]).then(() => {
+  Promise.race([Promise.all([...imagesReady, fontsReady]), deadline]).then(result => {
     if (finished || !root.classList.contains('intro-active')) return;
+    if (result === 'timeout') { finish(); return; }
     if (reducedMotion.matches) { finish(); return; }
     root.classList.add('opening');
     finishTimer = setTimeout(finish, 5100);
