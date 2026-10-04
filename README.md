@@ -38,4 +38,4 @@ Cormorant Garamond is bundled locally under the SIL Open Font License; see `asse
 
 ## Falling cherry blossoms
 
-Lightweight CSS petals drift continuously along the page edges after the envelope opens. They sit behind the photographs and RSVP content, ignore pointer events, and never cover the QR code. The footer has a keyboard-accessible **Pause petals** checkbox that also works without JavaScript. Reduced-motion visitors see no falling animation.
+Thirty-six lightweight CSS petals drift continuously across the viewport after the envelope opens, including the top-center area. Their staggered phases, 13.5–21.5 second falls, varied sizes, rotations, and gentle sideways drift produce a fuller effect without synchronized bursts. They sit behind the photographs and RSVP content, ignore pointer events, and never cover the QR code. The footer has a keyboard-accessible **Pause petals** checkbox that also works without JavaScript. Reduced-motion visitors see no falling animation.
