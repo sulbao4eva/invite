@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Bao and Sul//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:bao-sul-wedding-20270417@sulbao4eva.github.io
+DTSTAMP:20261004T131503Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+SUMMARY:Bao & Sul's Wedding
+URL:https://sulbao4eva.github.io/bao-sul-wedding/
+END:VEVENT
+END:VCALENDAR

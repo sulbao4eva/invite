@@ -3,7 +3,7 @@
 html{background:#ede8de;scroll-behavior:smooth}
 body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:28px 24px 32px;background:radial-gradient(ellipse at 50% 0,#f6f1e9,transparent 70%)}
 button,a{-webkit-tap-highlight-color:transparent}
-a:focus-visible,button:focus-visible{outline:3px solid #654f2e;outline-offset:6px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #654f2e;outline-offset:6px}
 .stationery{position:relative;isolation:isolate;max-width:1120px;margin:auto;background:var(--paper);box-shadow:0 12px 70px #44341f0b;text-align:center;padding:62px 50px 30px;overflow:hidden}
 .stationery:focus{outline:none}
 .stationery:before,.intro:before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:url('./assets/paper.svg');z-index:-1}
@@ -31,12 +31,19 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 .invitation-message{position:relative;z-index:3;margin:0 auto;max-width:640px}
 .small-ornament{font-size:24px;color:var(--gold);margin:4px 0 15px}
 .message{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.35;margin:0 auto 26px;max-width:570px;text-wrap:balance}
+.message-line{display:block;white-space:nowrap}
 .rsvp-link{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 33px;border:1px solid #8d713f;background:#84704d;color:#fffdf8;text-decoration:none;font-size:13px;letter-spacing:.045em;box-shadow:0 4px 9px #6b543512;transition:background .2s,transform .2s}
 .rsvp-link:hover{background:#6c5737;transform:translateY(-2px)}
 .qr-block{margin:25px auto 0;width:180px}
 .qr-link{display:block;border:1px solid #d7c9ae;background:white;box-shadow:0 4px 18px #493b2d0b;padding:4px}
 .qr-link img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
 .qr-caption{margin:12px -20px 0;color:#6f6656;font-size:11px;letter-spacing:.065em}
+.calendar-save{margin:23px auto 0;max-width:360px;font-size:12px;color:#655738}
+.calendar-save summary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 12px;cursor:pointer;list-style:none;text-decoration:underline;text-underline-offset:4px;line-height:1.5}
+.calendar-save summary::-webkit-details-marker{display:none}
+.calendar-options{display:grid;gap:8px;margin:6px auto 0;max-width:310px}
+.calendar-options a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:12px 15px;border:1px solid var(--line);background:#fffdf8;color:#655738;text-decoration:none;text-align:left;line-height:1.5}
+.calendar-options a:hover{background:#eee5d6}
 .signature{font-family:var(--serif);font-size:22px;letter-spacing:.12em;color:#826c47;margin-top:40px}
 .signature i{font-weight:400;font-size:.8em}
 .intro{display:none;position:fixed;inset:0;background:var(--paper);z-index:10;isolation:isolate;overflow:hidden}
@@ -82,5 +89,5 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 /* Preserve the photographs' own aspect ratio at every viewport. */
 @media(min-width:1400px){body{padding-top:38px}.stationery{padding-top:68px}}
 @media(max-width:800px){body{padding:16px 14px}.stationery{padding:48px 32px 27px}.photo-collage{min-height:220px;margin-top:35px;gap:6px}.photo{padding:4px}.photo-centre{padding:6px}.floral{width:170px;top:145px}.floral-left{left:-65px}.floral-right{right:-65px}.message{font-size:28px}}
-@media(max-width:600px){body{padding:0;background:var(--paper)}.stationery{padding:43px 24px 26px;min-height:100svh}.paper-border{inset:10px}.paper-border:before{inset:4px}.ornament{margin-bottom:24px;font-size:21px}.eyebrow{font-size:9px;letter-spacing:.25em}h1{font-size:76px}.wedding-date{font-size:10px;gap:14px;margin-top:17px}.wedding-date span+span{padding-left:14px}.photo-collage{min-height:0;grid-template-columns:1fr 1fr;gap:16px 13px;padding:0 6px;margin:34px auto 23px;max-width:410px}.photo{padding:5px}.photo-centre{grid-column:1 / -1;grid-row:2;width:94%;justify-self:center;transform:rotate(-2deg)}.photo-most-left{grid-column:1;grid-row:3;width:100%;transform:rotate(-5deg)}.photo-second-left{grid-column:1;grid-row:1;width:84%;justify-self:end;transform:rotate(-4deg)}.photo-second-right{grid-column:2;grid-row:1;width:84%;justify-self:start;transform:rotate(4deg)}.photo-most-right{grid-column:2;grid-row:3;width:100%;transform:rotate(5deg)}.floral{width:130px;top:160px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}.small-ornament{margin-bottom:12px}.message{font-size:27px;line-height:1.3;max-width:330px;margin-bottom:23px}.rsvp-link{min-height:50px;padding:15px 27px}.qr-block{width:180px;margin-top:24px}.signature{margin-top:30px}.envelope-names{font-size:27px}.card-names{font-size:40px}.envelope-card{gap:10px}.mini-heading{font-size:7px}.skip{right:18px;top:18px}}
+@media(max-width:600px){body{padding:0;background:var(--paper)}.stationery{padding:43px 24px 26px;min-height:100svh}.paper-border{inset:10px}.paper-border:before{inset:4px}.ornament{margin-bottom:24px;font-size:21px}.eyebrow{font-size:9px;letter-spacing:.25em}h1{font-size:76px}.wedding-date{font-size:10px;gap:14px;margin-top:17px}.wedding-date span+span{padding-left:14px}.photo-collage{min-height:0;grid-template-columns:1fr 1fr;gap:16px 13px;padding:0 6px;margin:34px auto 23px;max-width:410px}.photo{padding:5px}.photo-centre{grid-column:1 / -1;grid-row:2;width:94%;justify-self:center;transform:rotate(-2deg)}.photo-most-left{grid-column:1;grid-row:3;width:100%;transform:rotate(-5deg)}.photo-second-left{grid-column:1;grid-row:1;width:84%;justify-self:end;transform:rotate(-4deg)}.photo-second-right{grid-column:2;grid-row:1;width:84%;justify-self:start;transform:rotate(4deg)}.photo-most-right{grid-column:2;grid-row:3;width:100%;transform:rotate(5deg)}.floral{width:130px;top:160px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}.small-ornament{margin-bottom:12px}.message{font-size:clamp(22px,6.7vw,27px);line-height:1.3;max-width:330px;margin-bottom:23px}.rsvp-link{min-height:50px;padding:15px 27px}.qr-block{width:180px;margin-top:24px}.signature{margin-top:30px}.envelope-names{font-size:27px}.card-names{font-size:40px}.envelope-card{gap:10px}.mini-heading{font-size:7px}.skip{right:18px;top:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.intro-active .intro{display:none}.intro-active .stationery{opacity:1;visibility:visible}.intro-active body{overflow:auto}}

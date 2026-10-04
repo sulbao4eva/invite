@@ -18,6 +18,12 @@ The supplied QR image is preserved. It encodes `https://qrco.de/bh2kby`, which w
 
 The current source form, `RSVP_test`, is available anonymously and asks only whether the guest can attend. Add a required name question in Google Forms if you need to identify guests. Optional Google sign-in saves progress; it is not required to access the form. Website RSVP responses are collected by Google Forms.
 
+## Save to calendar
+
+The link below the QR code opens a choice of Google Calendar or a downloadable iCalendar file for Apple, Outlook, and other calendars. Both prefill `Bao & Sul's Wedding` as an all-day event on **17 April 2027**. No event time or venue has been supplied. Guests confirm saving in their chosen calendar application.
+
+To change the calendar date, update the Google Calendar URL in `index.html` and `DTSTART` / `DTEND` in `assets/bao-sul-wedding.ics`. The end date for a one-day all-day event is the following day. Keep both options consistent.
+
 ## Preview and publish
 
 Serve the repository using any static HTTP server. To check the GitHub Pages repository path locally, serve its parent directory and visit `/bao-sul-wedding/`. Every local asset uses a relative path.
