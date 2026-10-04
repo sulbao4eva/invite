@@ -16,11 +16,11 @@ Replace **both** Google Forms URLs in `index.html` with the same public responde
 
 The supplied QR image is preserved. It encodes `https://qrco.de/bh2kby`, which was verified on 4 October 2026 to redirect to the same Google Form as both website links. The buttons link directly to Google Forms. Keep this redirect active while using the supplied QR image.
 
-The current source form, `RSVP_test`, is available anonymously and asks only whether the guest can attend. Add a required name question in Google Forms if you need to identify guests. Optional Google sign-in saves progress; it is not required to access the form. Website RSVP responses are collected by Google Forms.
+The source form, `RSVP_test`, is available anonymously. Its current public title is “Bao & Sul’s Wedding RSVP | Bao & Sul 婚礼出席回复”; it requires the main contact’s name, email, and attendance choice before continuing. Optional Google sign-in saves progress; it is not required to access the form. Website RSVP responses are collected by Google Forms.
 
 ## Save to calendar
 
-The link below the QR code opens a choice of Google Calendar or a downloadable iCalendar file for Apple, Outlook, and other calendars. Both prefill `Bao & Sul's Wedding` as an all-day event on **17 April 2027**, with the invitation text and website URL as the description. Google Calendar uses `Asia/Singapore`; the calendar file declares the same calendar timezone. All-day dates have no timezone-specific start or end time. No event time or venue has been supplied; these missing details must be confirmed before converting this to a timed event. Guests confirm saving in their chosen calendar application.
+The link below the QR code opens a choice of Google Calendar or a downloadable iCalendar file for Apple, Outlook, and other calendars. Both prefill `Bao & Sul's Wedding` as an all-day event on **17 April 2027**, with the invitation text and website URL as the description. Google Calendar uses `Asia/Singapore`; the calendar file declares the same calendar timezone. All-day dates have no timezone-specific start or end time. The current RSVP form states a noon start in Singapore, but an end time and venue have not been confirmed. Keep calendar entries all-day until those details are confirmed before converting this to a timed event. Guests confirm saving in their chosen calendar application.
 
 To change the calendar date, update the Google Calendar URL in `index.html` and `DTSTART` / `DTEND` in `assets/bao-sul-wedding.ics`. The end date for a one-day all-day event is the following day. Keep both options consistent.
 
