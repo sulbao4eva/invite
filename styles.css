@@ -10,7 +10,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .paper-border{position:absolute;inset:16px;border:1px solid var(--line);pointer-events:none;z-index:-1}
 .paper-border:before{content:'';position:absolute;inset:5px;border:1px solid #d7c9ae70}
 .falling-petals{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none;user-select:none}
-.petal-path{position:absolute;top:-28px;left:var(--x);width:var(--size);height:calc(100% + 56px);animation:petal-fall var(--fall) var(--delay) linear infinite;pointer-events:none}
+.petal-path{position:absolute;top:-55px;left:var(--x);width:calc(var(--size) * 2.4);height:calc(100% + 110px);animation:petal-fall var(--fall) var(--delay) linear infinite;pointer-events:none}
+.petal-canvas{display:none;width:100%;height:100%;pointer-events:none}
+.petals-enhanced .petal-canvas{display:block}
+.petals-enhanced .petal-path{display:none}
 .petal-path i{display:block;width:100%;aspect-ratio:1/.75;border-radius:80% 15% 70% 30%;background:radial-gradient(ellipse at 25% 20%,#fff6f3 10%,#edd0d0 62%,#d9adb4);box-shadow:inset -1px -1px 2px #b8849518;animation:petal-sway var(--sway) var(--delay) ease-in-out infinite alternate;pointer-events:none}
 .intro-active .petal-path,.intro-active .petal-path i,.stationery:has(#petals-paused:checked) .petal-path,.stationery:has(#petals-paused:checked) .petal-path i{animation-play-state:paused}
 @keyframes petal-fall{0%{transform:translate3d(0,0,0);opacity:0}7%,90%{opacity:var(--opacity)}100%{transform:translate3d(var(--drift),100%,0);opacity:0}}
