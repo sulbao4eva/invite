@@ -73,11 +73,12 @@
   });
   if (!seeds.length) return;
 
-  // Ten copies of each previous lifetime give exactly ten times the
-  // particle quantity and average arrival rate, without speeding up the fall.
-  const particles = Array.from({ length: seeds.length * 10 }, (_, index) => ({
+  // Two copies of each lifetime give one-fifth of the previous 360-petal
+  // quantity and arrival rate, while preserving the gentle falling speed.
+  const particleCount = seeds.length * 2;
+  const particles = Array.from({ length: particleCount }, (_, index) => ({
     ...seeds[index % seeds.length],
-    x: (index + 0.5) / (seeds.length * 10),
+    x: (index + 0.5) / particleCount,
     phase: (index * 0.61803398875) % 1,
     turn: seeds[index % seeds.length].turn + index * 0.47,
     sprite: index % 6, cycle: -1

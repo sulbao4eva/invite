@@ -38,6 +38,6 @@ Cormorant Garamond is bundled locally under the SIL Open Font License; see `asse
 
 ## Falling cherry blossoms
 
-A single canvas renders **360 larger petals** across the viewport, including the center. This is ten times the previous 36-petal quantity and ten times its average arrival rate (approximately 21 petals per second), while retaining the same gentle fall durations. Pre-rendered sprites and a capped pixel density keep the effect lightweight. Each petal varies in size, flutter, rotation, opacity, and sideways drift; its starting position changes on subsequent loops.
+A single canvas renders **72 larger petals** across the viewport, including the center. This is one-fifth of the previous 360-petal quantity and average arrival rate (now approximately 4.2 petals per second), while retaining the same gentle fall durations. Pre-rendered sprites and a capped pixel density keep the effect lightweight. Each petal varies in size, flutter, rotation, opacity, and sideways drift; its starting position changes on subsequent loops.
 
 Petals sit behind photographs, invitation text, RSVP controls, and the QR code and ignore pointer events. The footer's keyboard-accessible **Pause petals** checkbox freezes the canvas and the CSS fallback. Animation stops while the tab is hidden and is disabled for reduced-motion visitors. If JavaScript or canvas is unavailable, the 36 CSS fallback petals still have the larger size, and the invitation remains fully usable.
