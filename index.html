@@ -8,7 +8,7 @@
   <title>Bao & Sul | Wedding Invitation</title>
   <link rel="icon" href="./assets/monogram.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/fonts.css">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=20261004-mobile2">
   <script>
     // Enhancement only: the complete invitation is visible without JavaScript.
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -22,7 +22,7 @@
       }, 10000);
     }
   </script>
-  <script src="./script.js" defer></script>
+  <script src="./script.js?v=20261004-mobile2" defer></script>
 </head>
 <body>
   <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Opening Bao and Sul's wedding invitation">
@@ -120,6 +120,7 @@
     <footer class="signature reveal" aria-label="With love, Bao and Sul">
       <span aria-hidden="true">B <i>&</i> S</span>
       <label class="petal-control"><input id="petals-paused" type="checkbox"> Pause petals</label>
+      <button id="replay" class="motion-control" type="button" hidden>Replay invitation</button>
     </footer>
   </main>
 </body>

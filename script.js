@@ -4,13 +4,16 @@
   const main = document.getElementById('invitation');
   const intro = document.getElementById('intro');
   const skip = document.getElementById('skip');
+  const replay = document.getElementById('replay');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let finished = !root.classList.contains('intro-active');
+  let finished = true;
   let finishTimer;
+  let run = 0;
 
   function finish() {
     if (finished) return;
     finished = true;
+    run++;
     clearTimeout(finishTimer);
     clearTimeout(window.invitationFallback);
     const moveFocus = intro.contains(document.activeElement);
@@ -20,34 +23,56 @@
     if (moveFocus) main.focus({ preventScroll: true });
   }
 
-  if (finished) return;
-  main.inert = true;
-  main.setAttribute('aria-hidden', 'true');
+  function start(userRequested = false) {
+    if (reducedMotion.matches && !userRequested) { finished = false; finish(); return; }
+    if (userRequested && reducedMotion.matches) {
+      root.classList.add('motion-enabled');
+      document.getElementById('petals-paused').checked = false;
+    }
+    finished = false;
+    const currentRun = ++run;
+    root.classList.remove('opening');
+    root.classList.add('intro-active');
+    main.inert = true;
+    main.setAttribute('aria-hidden', 'true');
+    if (userRequested) skip.focus({ preventScroll: true });
+    clearTimeout(window.invitationFallback);
+    window.invitationFallback = setTimeout(finish, 10000);
+    // The envelope is drawn in CSS. Photos can load during its opening;
+    // a slow font gets a serif fallback rather than skipping the animation.
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    const deadline = new Promise(resolve => setTimeout(resolve, 500));
+    Promise.race([fontsReady, deadline]).then(() => {
+      if (finished || currentRun !== run) return;
+      // Flush the closed state so replay also restarts CSS animations in Safari.
+      void intro.offsetWidth;
+      root.classList.add('opening');
+      finishTimer = setTimeout(finish, 5100);
+    }).catch(finish);
+  }
+
+  function updateReplay() {
+    replay.textContent = reducedMotion.matches && !root.classList.contains('motion-enabled')
+      ? 'Play invitation & petals' : 'Replay invitation';
+  }
+  replay.hidden = false;
+  updateReplay();
+  replay.addEventListener('click', () => { start(true); updateReplay(); });
   skip.addEventListener('click', finish);
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') finish();
-    // Keep keyboard focus on the sole control during the opening.
     if (!finished && event.key === 'Tab') { event.preventDefault(); skip.focus(); }
   });
-  reducedMotion.addEventListener('change', event => { if (event.matches) finish(); });
-
-  const imagesReady = Array.from(main.querySelectorAll('img')).map(img => {
-    if (img.complete) return Promise.resolve();
-    return new Promise(resolve => {
-      img.addEventListener('load', resolve, { once: true });
-      img.addEventListener('error', resolve, { once: true });
-    });
-  });
-  // Slow networks must never leave guests stranded behind an opening screen.
-  const deadline = new Promise(resolve => setTimeout(() => resolve('timeout'), 2500));
-  const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-  Promise.race([Promise.all([...imagesReady, fontsReady]), deadline]).then(result => {
-    if (finished || !root.classList.contains('intro-active')) return;
-    if (result === 'timeout') { finish(); return; }
-    if (reducedMotion.matches) { finish(); return; }
-    root.classList.add('opening');
-    finishTimer = setTimeout(finish, 5100);
-  }).catch(finish);
+  function motionChanged(event) {
+    root.classList.remove('motion-enabled');
+    if (event.matches) finish();
+    updateReplay();
+  }
+  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', motionChanged);
+  else reducedMotion.addListener(motionChanged);
+  // A page restored from Safari's back/forward cache should remain usable.
+  window.addEventListener('pageshow', event => { if (event.persisted) finish(); });
+  if (root.classList.contains('intro-active')) start();
 })();
 
 (() => {
@@ -73,14 +98,21 @@
   });
   if (!seeds.length) return;
 
-  // Two copies of each lifetime give one-fifth of the previous 360-petal
-  // quantity and arrival rate, while preserving the gentle falling speed.
-  const particleCount = seeds.length * 2;
-  const particles = Array.from({ length: particleCount }, (_, index) => ({
-    ...seeds[index % seeds.length],
+  // Reduce the previous 0.4 density by 20%. Round the count and scale
+  // lifetimes so the arrival rate is also reduced by exactly 20%.
+  const density = 0.32;
+  const previousParticleCount = Math.round(seeds.length * 0.4);
+  const particleCount = Math.max(1, Math.round(previousParticleCount * 0.8));
+  const selectedSeeds = Array.from({ length: particleCount }, (_, index) =>
+    seeds[Math.floor(index * seeds.length / particleCount)]);
+  const targetArrivalRate = seeds.reduce((sum, seed) => sum + 1 / seed.life, 0) * density;
+  const durationScale = selectedSeeds.reduce((sum, seed) => sum + 1 / seed.life, 0) / targetArrivalRate;
+  const particles = selectedSeeds.map((seed, index) => ({
+    ...seed,
+    life: seed.life * durationScale,
     x: (index + 0.5) / particleCount,
     phase: (index * 0.61803398875) % 1,
-    turn: seeds[index % seeds.length].turn + index * 0.47,
+    turn: seed.turn + index * 0.47,
     sprite: index % 6, cycle: -1
   }));
   const sprites = Array.from({ length: 6 }, (_, index) => {
@@ -104,6 +136,18 @@
     return sprite;
   });
 
+  // Keep the fixed canvas out of hidden/transformed invitation ancestors.
+  // Safari can otherwise clip it or keep an obsolete compositing layer.
+  document.body.appendChild(layer);
+  const protectedElements = Array.from(document.querySelectorAll(
+    '.invitation-heading, .photo, .message, .small-ornament, .rsvp-link, .qr-block, .calendar-save, .signature'
+  ));
+  let protectedRects = [];
+  function measureContent() {
+    protectedRects = protectedElements.map(element => element.getBoundingClientRect())
+      .filter(rect => rect.width && rect.height);
+  }
+
   let width = 0;
   let height = 0;
   let elapsed = 0;
@@ -111,8 +155,9 @@
   let frame = 0;
 
   function resize() {
-    width = layer.clientWidth;
-    height = layer.clientHeight;
+    width = layer.clientWidth || window.innerWidth;
+    height = layer.clientHeight || window.innerHeight;
+    measureContent();
     const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
@@ -145,6 +190,11 @@
         petal.size, petal.size * flutter);
       context.restore();
     }
+    // Transparent cutouts preserve faces, text, buttons and the QR quiet zone.
+    // Rectangles are cached on layout/scroll events, not read on every frame.
+    for (const rect of protectedRects) {
+      context.clearRect(rect.left - 3, rect.top - 3, rect.width + 6, rect.height + 6);
+    }
   }
 
   function tick(time) {
@@ -155,25 +205,30 @@
   }
 
   function sync() {
-    const stopped = motion.matches || pause.checked || document.hidden ||
+    const stopped = (motion.matches && !root.classList.contains('motion-enabled')) || pause.checked || document.hidden ||
       root.classList.contains('intro-active');
     if (stopped) {
       cancelAnimationFrame(frame);
       frame = 0;
       previous = 0;
     } else if (!frame) {
-      if (!root.classList.contains('petals-enhanced')) {
-        resize();
-        root.classList.add('petals-enhanced');
-      }
+      resize();
+      root.classList.add('petals-enhanced');
       frame = requestAnimationFrame(tick);
     }
   }
 
   pause.addEventListener('change', sync);
-  motion.addEventListener('change', sync);
+  if (motion.addEventListener) motion.addEventListener('change', sync);
+  else motion.addListener(sync);
   document.addEventListener('visibilitychange', sync);
   window.addEventListener('resize', resize, { passive: true });
+  window.addEventListener('orientationchange', resize, { passive: true });
+  window.addEventListener('pageshow', () => { resize(); sync(); });
+  window.addEventListener('scroll', measureContent, { passive: true });
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', resize, { passive: true });
+  document.querySelector('.calendar-save').addEventListener('toggle', measureContent);
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(document.getElementById('invitation'));
   new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['class'] });
   sync();
 })();
