@@ -1,6 +1,6 @@
 # Bao & Sul — Wedding Invitation
 
-A small static invitation for 17 April 2027, with an automatic envelope opening and RSVP links to Google Forms. No build step, database, analytics, or external fonts. The venue preview uses a Google-hosted map embed; the invitation and directions links remain ordinary HTML.
+A small static invitation for 17 April 2027, with a guest-activated envelope opening and RSVP links to Google Forms. No build step, database, analytics, or external fonts. The venue preview uses a Google-hosted map embed; the invitation and directions links remain ordinary HTML.
 
 ## Update the photographs
 
@@ -24,11 +24,11 @@ Hilton Singapore Orchard's official website confirms **333 Orchard Road, Singapo
 
 Google's place record resolves to the Hilton pin with place ID `ChIJU2DzfLcZ2jER4WGAnEnqNFw` (also matching the CID `6644192952157495777` linked by Hilton). Both the entire map preview and **Get Directions** use the standard `https://www.google.com/maps/dir/?api=1` URL with the verified destination and place ID. Google Maps handles its app/browser fallback. The embed URL was copied directly from Google Maps → Share → Embed a map on 5 October 2026. The Google-hosted embed retains Google's own map labels and attribution, uses lazy loading, and requires no project API key. It is presented as a clickable preview, so touch/keyboard navigation opens directions instead of trapping scroll in the embedded map. The explicit directions button remains available if a visitor blocks the third-party map.
 
-**Add to calendar** opens choices for Google Calendar and a downloadable iCalendar file for Apple, Outlook, and other calendars. Both use the exact title `Sul & Bao Wedding @Hilton Singapore Orchard L35` and **17 April 2027, 12:00 PM–3:00 PM Asia/Singapore (UTC+8)**, the full venue/address, a warm invitation, and the invitation, hotel, and directions URLs.
+**Save to calendar** opens choices for Google Calendar and a downloadable iCalendar file for Apple, Outlook, and other calendars. Both use the exact title `Sul & Bao Wedding @Hilton Singapore Orchard L35` and **17 April 2027, 12:00 PM–3:00 PM Asia/Singapore (UTC+8)**, the full venue/address, a warm invitation, and the invitation, hotel, and directions URLs.
 
 The Google URL encodes UTC start/end times `20270417T040000Z/20270417T070000Z` and `ctz=Asia/Singapore`. The `.ics` uses `DTSTART;TZID=Asia/Singapore:20270417T120000` / `DTEND;TZID=Asia/Singapore:20270417T150000`, a matching fixed UTC+8 `VTIMEZONE`, RFC-compliant text escaping, CRLF endings, and folded lines. The existing event UID is preserved. Guests confirm saving in their calendar application.
 
-Update the Google Calendar URL and `.ics` together if details change. Do not revert to all-day dates. The responsive reading order is invitation, venue/map, calendar, RSVP/QR, and the B & S closing signature. Desktop uses paired venue/map and RSVP/QR layouts; narrow screens stack them.
+Update the Google Calendar URL and `.ics` together if details change. Do not revert to all-day dates. The invitation message uses larger type than the venue details. The responsive reading order is invitation with its calendar choices directly beneath the message in the same section, venue/map, RSVP/QR, and the B & S closing signature. Desktop uses paired venue/map and RSVP/QR layouts; narrow screens stack them.
 
 ## Preview and publish
 
@@ -38,7 +38,11 @@ GitHub Pages should publish from **main / (root)**. `.nojekyll` disables unneces
 
 ## Accessibility and opening
 
-The invitation is ordinary readable HTML and remains visible without JavaScript. With JavaScript, a font-readiness wait capped at 500ms starts a 5.1-second envelope sequence. Guests can skip using the visible control or Escape. Reduced-motion visitors see the invitation immediately. Photos load during the sequence; slow assets never skip the opening. An independent 10-second fallback protects against a failed script. Reduced-motion visitors have a visible **Play animations** option below the heading, with a short explanation, as well as the footer control. Both explicitly opt in to the opening and petals without automatically overriding their device preference. An opening loaded in a hidden tab waits until it is visible; leaving during the sequence safely reveals the invitation. Links have visible keyboard focus and open the public Google Form in a new tab.
+The invitation is ordinary readable HTML and remains visible without JavaScript. With JavaScript, the first view is a closed envelope and a “Tap or click the envelope to open” prompt. It stays closed indefinitely until a guest activates the native button by click, tap, Enter, or Space. Tab focuses the envelope without starting the animation. No load, visibility, or page-restoration handler automatically starts the opening.
+
+After activation, a font-readiness wait capped at 500ms starts the existing 5.1-second envelope sequence. Guests can skip the running sequence using the visible control or Escape. Photos can load during the sequence. A 10-second script-loading fallback reveals the usable invitation if the main script fails; after successful initialization it is cancelled and cannot automatically dismiss the closed envelope. The running animation has its own completion fallback.
+
+Reduced-motion visitors also start with the closed envelope; activating it reveals the invitation immediately without motion. They retain a visible **Play animations** opt-in below the heading and in the footer, so the device preference is respected. Leaving during an active sequence safely reveals the invitation; leaving and returning while the envelope is still closed keeps it closed. Links and the envelope have visible keyboard focus, and RSVP links open the public Google Form in a new tab.
 
 Cormorant Garamond is bundled locally under the SIL Open Font License; see `assets/FONT-LICENSE.txt`. Floral artwork, the monogram, and the paper texture are lightweight local SVG files.
 
@@ -57,6 +61,13 @@ The keyboard-accessible **Pause petals** checkbox freezes the canvas and the CSS
 - Chromium browser checks passed at 320, 375, 390, 393, 430, 600, 768, 1024, and 1440px without horizontal overflow or controls outside the viewport.
 - Calendar disclosure/download, RSVP popup destinations (network navigation intercepted for the click test), keyboard focus, envelope replay/completion, petal movement/pause, and reduced-motion opt-in passed with no invitation JavaScript errors.
 - Normal-size text contrast checks exceed WCAG AA's 4.5:1 threshold.
-- Hilton's address was verified from its official location page. The Google Maps place record and share-generated embed were verified through the Google Maps interface; the map label/pin render in the local test environment still requires visual confirmation.
+- Hilton's address was verified from its official location page. The Google Maps place record and share-generated embed were verified through the Google Maps interface; the map label/pin and hotel directions were confirmed in the published invitation with the cloud browser.
 - These are Chromium viewport checks, not physical iPhone/Android tests. WebKit could not run because required system libraries were unavailable. Actual Safari/iOS behaviour and app handoff require device verification.
 - After publishing, confirm the Pages deployment succeeded and verify the deployed invitation and map preview in a browser.
+
+### Guest-activated envelope revision
+
+- The envelope remains closed after 11 seconds without input; Tab only focuses it. Enter, Space, and click activate the sequence, and the transition restores access and focus to the invitation.
+- Closed-envelope restoration and reduced-motion preference changes do not start or dismiss it. Skip/Escape, immediate opening for reduced motion, explicit animation opt-in, and the script-failure fallback passed.
+- The larger invitation type, smaller venue type, nested calendar disclosure/download, and touch-target bounds passed at 320, 375, 430, 600, 768, 1024, and 1440px in Chromium viewport emulation.
+- Envelope names remain centered within the closed envelope at mobile and desktop widths. Petal resume/pause checks and the unchanged calendar details and RSVP destinations passed.

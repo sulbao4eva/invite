@@ -3,6 +3,7 @@
   const root = document.documentElement;
   const main = document.getElementById('invitation');
   const intro = document.getElementById('intro');
+  const opener = document.getElementById('open-envelope');
   const skip = document.getElementById('skip');
   const replay = document.getElementById('replay');
   const motionNotice = document.getElementById('motion-notice');
@@ -12,10 +13,13 @@
   let finishTimer;
   let run = 0;
   let ready = false;
+  let started = false;
 
   function finish() {
     if (finished) return;
     finished = true;
+    started = false;
+    opener.disabled = false;
     run++;
     clearTimeout(finishTimer);
     clearTimeout(window.invitationFallback);
@@ -27,12 +31,16 @@
   }
 
   function start(userRequested = false) {
+    if (started) return;
     if (reducedMotion.matches && !userRequested) { finished = false; finish(); return; }
     if (userRequested && reducedMotion.matches) {
       root.classList.add('motion-enabled');
       document.getElementById('petals-paused').checked = false;
     }
     finished = false;
+    started = true;
+    opener.disabled = true;
+    skip.hidden = false;
     ready = false;
     clearTimeout(finishTimer);
     const currentRun = ++run;
@@ -40,7 +48,7 @@
     root.classList.add('intro-active');
     main.inert = true;
     main.setAttribute('aria-hidden', 'true');
-    if (userRequested) skip.focus({ preventScroll: true });
+    skip.focus({ preventScroll: true });
     clearTimeout(window.invitationFallback);
     // The envelope is drawn in CSS. Photos can load during its opening;
     // a slow font gets a serif fallback rather than skipping the animation.
@@ -70,32 +78,43 @@
   }
   replay.hidden = false;
   updateReplay();
+  opener.addEventListener('click', () => start());
   function playAnimations() { start(true); updateReplay(); }
   replay.addEventListener('click', playAnimations);
   play.addEventListener('click', playAnimations);
   skip.addEventListener('click', finish);
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') finish();
-    if (!finished && event.key === 'Tab') { event.preventDefault(); skip.focus(); }
+    if (!finished && event.key === 'Tab') {
+      event.preventDefault();
+      (started ? skip : opener).focus();
+    }
   });
   function motionChanged(event) {
     root.classList.remove('motion-enabled');
-    if (event.matches) finish();
+    if (event.matches && started) finish();
     updateReplay();
   }
   if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', motionChanged);
   else reducedMotion.addListener(motionChanged);
   // A page restored from Safari's back/forward cache should remain usable.
-  window.addEventListener('pagehide', finish);
+  window.addEventListener('pagehide', () => { if (started) finish(); });
   window.addEventListener('pageshow', event => {
-    if (event.persisted) finish();
+    if (event.persisted && started) finish();
     else beginWhenVisible();
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && root.classList.contains('opening')) finish();
     else if (!document.hidden) beginWhenVisible();
   });
-  if (root.classList.contains('intro-active')) start();
+  if (root.classList.contains('intro-active')) {
+    finished = false;
+    main.inert = true;
+    main.setAttribute('aria-hidden', 'true');
+    opener.focus({ preventScroll: true });
+  }
+  root.classList.add('intro-ready');
+  clearTimeout(window.invitationFallback);
 })();
 
 (() => {

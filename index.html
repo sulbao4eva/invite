@@ -8,34 +8,37 @@
   <title>Bao & Sul | Wedding Invitation</title>
   <link rel="icon" href="./assets/monogram.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/fonts.css">
-  <link rel="stylesheet" href="./styles.css?v=20261005-venue">
+  <link rel="stylesheet" href="./styles.css?v=20261005-envelope">
   <script>
-    // Enhancement only: the complete invitation is visible without JavaScript.
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('intro-active');
-      window.invitationFallback = setTimeout(function () {
-        document.documentElement.classList.remove('intro-active', 'opening');
-        var main = document.getElementById('invitation');
-        if (main) { main.inert = false; main.removeAttribute('aria-hidden'); }
-        var intro = document.getElementById('intro');
-        if (intro && intro.contains(document.activeElement)) main.focus({preventScroll: true});
-      }, 10000);
-    }
+    // Enhancement only: guests open the invitation themselves.
+    // If the main script fails to load, reveal the usable invitation instead.
+    document.documentElement.classList.add('intro-active');
+    window.invitationFallback = setTimeout(function () {
+      if (document.documentElement.classList.contains('intro-ready')) return;
+      document.documentElement.classList.remove('intro-active', 'opening');
+      var main = document.getElementById('invitation');
+      if (main) { main.inert = false; main.removeAttribute('aria-hidden'); }
+      var intro = document.getElementById('intro');
+      if (main && intro && intro.contains(document.activeElement)) main.focus({preventScroll: true});
+    }, 10000);
   </script>
-  <script src="./script.js?v=20261005-venue" defer></script>
+  <script src="./script.js?v=20261005-envelope" defer></script>
 </head>
 <body>
-  <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Opening Bao and Sul's wedding invitation">
-    <button id="skip" class="skip" type="button">Skip animation <span aria-hidden="true">↗</span></button>
-    <div class="envelope-scene" aria-hidden="true">
-      <div class="envelope">
-        <div class="envelope-back"></div>
-        <div class="envelope-card"><span class="mini-heading">THE WEDDING OF</span><span class="card-names">Bao <i>&</i> Sul</span><span class="card-date">17 APRIL 2027</span></div>
-        <div class="envelope-pocket"></div>
-        <div class="envelope-flap"></div>
-        <div class="seal">B<span>&</span>S</div>
-        <div class="envelope-names">Bao & Sul</div>
-      </div>
+  <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Bao and Sul's wedding invitation">
+    <button id="skip" class="skip" type="button" hidden>Skip animation <span aria-hidden="true">↗</span></button>
+    <div class="envelope-scene">
+      <button id="open-envelope" class="envelope-trigger" type="button" aria-label="Open Bao and Sul's wedding invitation" aria-describedby="envelope-hint">
+        <span class="envelope" aria-hidden="true">
+          <span class="envelope-back"></span>
+          <span class="envelope-card"><span class="mini-heading">THE WEDDING OF</span><span class="card-names">Bao <i>&</i> Sul</span><span class="card-date">17 APRIL 2027</span></span>
+          <span class="envelope-pocket"></span>
+          <span class="envelope-flap"></span>
+          <span class="seal">B<span>&</span>S</span>
+          <span class="envelope-names">Bao & Sul</span>
+        </span>
+      </button>
+      <p id="envelope-hint" class="envelope-hint">Tap or click the envelope to open</p>
     </div>
   </div>
 
@@ -106,8 +109,18 @@
       <p class="message">
         <span class="message-line message-intro">You're cordially invited to</span>
         <span class="message-line message-names">Bao & Sul's Wedding</span>
-        <span class="message-line message-date">on 17th April 2027</span>
+        <span class="message-line message-date">17 April 2027</span>
       </p>
+      <div class="calendar-section">
+        <details class="calendar-save">
+          <summary><svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M7 3v4m10-4v4M3.5 10h17m-13 4h3m3 0h3m-9 3h3"></path></svg>Save to calendar <span class="calendar-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="calendar-options">
+            <a class="google-calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sul+%26+Bao+Wedding+%40Hilton+Singapore+Orchard+L35&amp;dates=20270417T040000Z%2F20270417T070000Z&amp;ctz=Asia%2FSingapore&amp;location=Imperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;details=You%27re+warmly+invited+to+celebrate+Sul+%26+Bao%27s+wedding%21%0A%0ASaturday%2C+17+April+2027%0A12%3A00+PM%E2%80%933%3A00+PM+%28Singapore+time%2C+UTC%2B8%29%0AImperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867%0A%0AWedding+invitation%3A+https%3A%2F%2Fsulbao4eva.github.io%2Fbao-sul-wedding%2F%0AHotel+website%3A+https%3A%2F%2Fwww.hilton.com%2Fen%2Fhotels%2Fsinorhi-hilton-singapore-orchard%2F%0AGoogle+Maps+directions%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3DHilton%2BSingapore%2BOrchard%252C%2B333%2BOrchard%2BRoad%252C%2BSingapore%2B238867%26destination_place_id%3DChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer">Google Calendar <span aria-hidden="true">↗</span></a>
+            <a href="./assets/bao-sul-wedding.ics" download="bao-sul-wedding.ics">Apple, Outlook & other calendars <span aria-hidden="true">↓</span></a>
+          </div>
+        </details>
+        <p class="calendar-note">12:00–3:00 PM · Singapore time</p>
+      </div>
     </section>
 
     <section class="venue-section reveal" aria-labelledby="venue-heading">
@@ -129,17 +142,6 @@
         </a>
       </div>
     </section>
-
-    <div class="calendar-section reveal">
-      <details class="calendar-save">
-        <summary><svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M7 3v4m10-4v4M3.5 10h17m-13 4h3m3 0h3m-9 3h3"></path></svg>Add to calendar <span class="calendar-chevron" aria-hidden="true">⌄</span></summary>
-        <div class="calendar-options">
-          <a class="google-calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sul+%26+Bao+Wedding+%40Hilton+Singapore+Orchard+L35&amp;dates=20270417T040000Z%2F20270417T070000Z&amp;ctz=Asia%2FSingapore&amp;location=Imperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;details=You%27re+warmly+invited+to+celebrate+Sul+%26+Bao%27s+wedding%21%0A%0ASaturday%2C+17+April+2027%0A12%3A00+PM%E2%80%933%3A00+PM+%28Singapore+time%2C+UTC%2B8%29%0AImperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867%0A%0AWedding+invitation%3A+https%3A%2F%2Fsulbao4eva.github.io%2Fbao-sul-wedding%2F%0AHotel+website%3A+https%3A%2F%2Fwww.hilton.com%2Fen%2Fhotels%2Fsinorhi-hilton-singapore-orchard%2F%0AGoogle+Maps+directions%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3DHilton%2BSingapore%2BOrchard%252C%2B333%2BOrchard%2BRoad%252C%2BSingapore%2B238867%26destination_place_id%3DChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer">Google Calendar <span aria-hidden="true">↗</span></a>
-          <a href="./assets/bao-sul-wedding.ics" download="bao-sul-wedding.ics">Apple, Outlook & other calendars <span aria-hidden="true">↓</span></a>
-        </div>
-      </details>
-      <p class="calendar-note">12:00–3:00 PM · Singapore time</p>
-    </div>
 
     <section class="rsvp-section reveal" aria-labelledby="rsvp-heading">
       <div class="rsvp-copy">
