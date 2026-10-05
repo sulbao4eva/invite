@@ -1,4 +1,4 @@
-:root{color-scheme:light;--paper:#f8f4ec;--ink:#484438;--gold:#8d713f;--line:#d7c9ae;--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+:root{color-scheme:light;--paper:#f8f4ec;--ink:#484438;--gold:#8d713f;--line:#d7c9ae;--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--script:'Great Vibes',var(--serif)}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{background:#ede8de;scroll-behavior:smooth}
@@ -22,17 +22,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .intro-active .petal-path,.intro-active .petal-path i,.stationery:has(#petals-paused:checked) .petal-path,.stationery:has(#petals-paused:checked) .petal-path i{animation-play-state:paused}
 @keyframes petal-fall{0%{transform:translate3d(0,0,0);opacity:0}7%,90%{opacity:var(--opacity)}100%{transform:translate3d(var(--drift),100%,0);opacity:0}}
 @keyframes petal-sway{from{transform:translateX(calc(-1 * var(--sweep))) rotate(var(--turn)) rotateY(calc(-1 * var(--tilt)))}to{transform:translateX(var(--sweep)) rotate(calc(var(--turn) + var(--rotation))) rotateY(var(--tilt))}}
-.invitation-heading{position:relative;z-index:2}
-.ornament{display:flex;align-items:center;justify-content:center;gap:15px;color:var(--gold);font-size:24px;margin-bottom:23px}
+.invitation-heading{position:relative;z-index:2;max-width:900px;margin-inline:auto}
+.ornament{display:flex;align-items:center;justify-content:center;gap:15px;color:var(--gold);font-size:24px;margin-bottom:20px}
 .ornament span{width:44px;height:1px;background:var(--line)}
-.eyebrow{font-size:10px;font-weight:500;letter-spacing:.34em;margin:0 0 6px;padding-left:.34em;color:#726552}
-h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;letter-spacing:-.04em;line-height:1.1;margin:0}
-.invitation-heading h1{width:fit-content;margin-inline:auto;padding-inline:6px;background:var(--paper)}
-.ampersand{font-style:italic;font-size:.82em;color:var(--gold);display:inline-block;margin:0 .05em}
-.wedding-date{display:flex;justify-content:center;align-items:center;gap:19px;font-size:11px;letter-spacing:.23em;margin:22px 0 0;color:#726552}
-.wedding-date span+span{border-left:1px solid var(--line);padding-left:19px}
-.wedding-date span{background:var(--paper)}
-.photo-collage{position:relative;width:100%;max-width:1000px;min-height:270px;margin:54px auto 18px;display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr 1fr;gap:9px;align-items:center}
+.message-intro,.message-date{font:400 30px/1.3 var(--serif);margin:0;color:#5b5141;text-wrap:balance}
+.message-names{font:500 clamp(54px,6.3vw,76px)/1.1 var(--serif);letter-spacing:-.025em;margin:12px 0 14px;text-wrap:balance}
+.given-name{white-space:nowrap}
+.ampersand{font-style:italic;font-size:.8em;font-weight:400;color:var(--gold);display:inline-block;margin:0 .025em}
+.wedding-word{display:block;font:italic 400 34px/1.2 var(--serif);letter-spacing:.01em;margin-top:10px}
+.message-date time{white-space:nowrap}
+.photo-collage{position:relative;width:100%;max-width:1000px;min-height:235px;margin:30px auto 20px;display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr 1fr;gap:9px;align-items:center}
 .photo{margin:0;background:#fffdf8;padding:6px;box-shadow:0 8px 24px #493b2d24;border:1px solid #c8bca03b;min-width:0;position:relative}
 .photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
 .photo-most-left{transform:rotate(-8deg) translateY(24px);z-index:1}
@@ -43,13 +42,6 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 .floral{position:absolute;pointer-events:none;width:225px;height:auto;top:125px;z-index:-1;opacity:.86}
 .floral-left{left:-49px;transform:rotate(-5deg)}
 .floral-right{right:-49px;transform:scaleX(-1) rotate(-5deg)}
-.invitation-message{position:relative;z-index:3;margin:0 auto;max-width:720px}
-.small-ornament{font-size:24px;color:var(--gold);margin:4px 0 15px}
-.message{font-family:var(--serif);font-weight:400;line-height:1.25;margin:0 auto 22px;max-width:680px;text-align:center;background:var(--paper)}
-.message-line{display:block;text-wrap:balance}
-.message-intro{font-size:32px}
-.message-names{font-size:60px;font-weight:500;letter-spacing:-.02em;margin:8px 0 9px}
-.message-date{font-size:32px}
 .rsvp-link{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:15px 28px;border:1px solid #715b37;background:#715b37;color:#fffdf8;text-decoration:none;font-size:14px;letter-spacing:.025em;box-shadow:0 4px 9px #6b543512;transition:background .2s,transform .2s}
 .rsvp-link:hover{background:#6c5737;transform:translateY(-2px)}
 .qr-block{margin:0;width:180px;flex:none}
@@ -86,16 +78,16 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 .calendar-options{display:grid;gap:8px;margin:6px auto 0;max-width:310px}
 .calendar-options a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:12px 15px;border:1px solid var(--line);background:#fffdf8;color:#655738;text-decoration:none;text-align:left;line-height:1.5}
 .calendar-options a:hover{background:#eee5d6}
-.rsvp-section{margin-top:36px;display:flex;align-items:center;justify-content:center;gap:56px;padding:34px 0 0;border-top:1px solid var(--line);text-align:left}
+.rsvp-section{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:56px;padding:36px 20px 0;border-top:1px solid var(--line);text-align:left}
 .rsvp-copy{max-width:390px;min-width:0}
 .rsvp-section h2{font-size:34px}
 .rsvp-note{font-size:13px;line-height:1.7;margin:0 0 22px;color:#6f6656}
 .rsvp-section .qr-block{text-align:center}
-.signature{position:relative;z-index:3;font-family:var(--serif);letter-spacing:.12em;color:#826c47;margin-top:42px}
-.closing-message{font-size:20px;font-style:italic;letter-spacing:.015em;margin:0 0 5px;color:#6f6656}
-.signature-mark{font-size:42px;line-height:1.2}
-.signature i{font-weight:400;font-size:.8em}
-.animation-controls{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin-top:20px}
+.signature{position:relative;z-index:3;color:#826c47;margin-top:52px;padding-top:6px}
+.closing-message{font:italic 400 23px/1.4 var(--serif);margin:0 0 12px;color:#6f6656}
+.signature-mark{display:inline-block;font:400 72px/1.35 var(--script);letter-spacing:0;padding:0 15px;color:#826c47}
+.signature i{font-style:normal;font-size:.78em}
+.animation-controls{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin-top:24px}
 .animation-controls .petal-control{margin:0}
 .petal-control{display:flex;align-items:center;justify-content:center;gap:7px;width:fit-content;min-height:44px;margin:10px auto 0;padding:8px 12px;font:11px system-ui;letter-spacing:.02em;color:#6f6656;background:var(--paper);cursor:pointer}
 .motion-notice{margin:14px auto 0;max-width:320px;color:#6f6656;font:11px/1.6 system-ui}
@@ -104,29 +96,30 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 .motion-control{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;background:var(--paper);border:0;color:#6f6656;font:11px system-ui;letter-spacing:.02em;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .petal-control input{accent-color:#84704d;width:14px;height:14px;margin:0}
 .petal-control input:focus-visible{outline:3px solid #654f2e;outline-offset:4px}
-.intro{display:none;position:fixed;inset:0;background:var(--paper);z-index:10;isolation:isolate;overflow:hidden}
+.intro{display:none;position:fixed;inset:0;background:radial-gradient(ellipse at 50% 42%,#fffdf7 0%,var(--paper) 65%,#ece4d7 100%);z-index:10;isolation:isolate;overflow:hidden}
 .intro-active .intro{display:block}
 .intro-active .stationery{opacity:0;visibility:hidden}
 .intro-active body{overflow:hidden}
 .skip{position:absolute;right:max(24px,env(safe-area-inset-right));top:max(24px,env(safe-area-inset-top));z-index:20;background:transparent;border:1px solid #baaa8c;color:#655738;padding:12px 17px;min-height:44px;font:12px system-ui;cursor:pointer}
 .skip span{margin-left:10px}
-.envelope-scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;perspective:1100px;padding:80px 20px 40px}
-.envelope-trigger{display:block;width:min(440px,80vw);padding:0;border:0;background:transparent;cursor:pointer;border-radius:3px}
+.envelope-scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;perspective:1100px;padding:80px 20px 40px}
+.envelope-trigger{display:block;width:min(460px,82vw);padding:0;border:0;background:transparent;cursor:pointer;border-radius:3px}
 .envelope-trigger:disabled{cursor:default}
-.envelope-hint{margin:0;text-align:center;font:14px/1.6 system-ui;color:#655738;letter-spacing:.025em}
+.envelope-hint{margin:0;text-align:center;font:12px/1.6 system-ui;color:#76674f;letter-spacing:.05em}
 .opening .envelope-hint{visibility:hidden}
-.envelope{display:block;position:relative;width:100%;aspect-ratio:1.55;opacity:1;transform:translateY(0) scale(1);filter:drop-shadow(0 20px 25px #59472a1c);transform-style:preserve-3d}
-.envelope-back{position:absolute;inset:0;background:#ded0b7;border:1px solid #c9b794;border-radius:3px}
-.envelope-card{position:absolute;left:7%;right:7%;top:5%;height:88%;background:#fffcf5;border:1px solid #d7c9ae;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;box-shadow:0 2px 10px #44341f10;z-index:2}
-.mini-heading{font:8px system-ui;letter-spacing:.27em;color:#726552}
-.card-names{font:48px var(--serif);color:var(--ink)}
-.card-names i{color:var(--gold)}
-.card-date{font:9px system-ui;letter-spacing:.18em;color:#726552}
-.envelope-pocket{position:absolute;inset:0;z-index:3;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);background:linear-gradient(145deg,#eee2cd,#f1e7d7 49%,#e4d5bc 50%,#ede0c9 52%,#f1e7d7);border:1px solid #cdbd9e;border-radius:3px}
-.envelope-flap{position:absolute;inset:0;z-index:4;background:linear-gradient(170deg,#f2e8d9,#e7d8bd);clip-path:polygon(0 0,100% 0,50% 55%);transform-origin:top center;backface-visibility:visible}
-.seal{position:absolute;left:calc(50% - 30px);top:42%;width:60px;height:60px;border-radius:50%;background:radial-gradient(ellipse at 35% 25%,#dbbd7c,#af8743);border:3px double #c09b5c;box-shadow:0 3px 5px #44341f26,inset 0 0 0 3px #d5b579;z-index:5;display:flex;align-items:center;justify-content:center;font:19px var(--serif);color:#5d4828}
-.seal span{font-size:13px;margin:0 2px}
-.envelope-names{position:absolute;left:0;bottom:13%;width:100%;z-index:5;font:30px var(--serif);color:#655338;text-align:center}
+.envelope{display:block;position:relative;width:100%;aspect-ratio:1.55;opacity:1;transform:translateY(0) scale(1);filter:drop-shadow(0 22px 22px #59472a23);transform-style:preserve-3d}
+.envelope-back{position:absolute;inset:0;background:linear-gradient(135deg,#e8decb,#f4eee2 45%,#dfd1b5);border:1px solid #bca77c;border-radius:3px;box-shadow:inset 0 0 0 4px #f5eedf,inset 0 0 0 5px #cabb9e}
+.envelope-card{position:absolute;left:7%;right:7%;top:5%;height:88%;padding:18px 12px;background:#fffcf5 url('./assets/paper.svg');border:1px solid #bfa67c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;box-shadow:0 2px 14px #44341f14;z-index:2}
+.envelope-card:before{content:'';position:absolute;inset:6px;border:1px solid #d7c9ae;pointer-events:none}
+.mini-heading{font:9px system-ui;letter-spacing:.24em;color:#726552}
+.card-names{display:flex;flex-direction:column;align-items:center;font:500 43px/.98 var(--serif);color:var(--ink)}
+.card-names i{font-weight:400;font-size:23px;line-height:1.1;color:var(--gold);margin:3px 0}
+.card-date{font:10px system-ui;letter-spacing:.16em;color:#726552}
+.envelope-pocket{position:absolute;inset:0;z-index:3;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);background:linear-gradient(146deg,#f7f0e3,#ede3d0 49.6%,#d7c5a0 50%,#f1e8d8 50.5%,#fbf5eb 100%);border:1px solid #c5b28d;border-radius:3px;box-shadow:inset 0 -2px 4px #b79d6933}
+.envelope-pocket:after{content:'';position:absolute;inset:7px;border:1px solid #cfb98c66;pointer-events:none}
+.envelope-flap{position:absolute;inset:0;z-index:4;background:linear-gradient(165deg,#fff9ef 0%,#f0e7d6 38%,#d9c7a5 55%);clip-path:polygon(0 0,100% 0,50% 55%);transform-origin:top center;backface-visibility:visible}
+.seal{position:absolute;left:calc(50% - 34px);top:42%;width:68px;height:68px;border-radius:48% 52% 46% 54% / 53% 45% 55% 47%;background:radial-gradient(ellipse at 28% 18%,#f1dca5 0%,#cfac67 36%,#a6803d 78%,#cfaf6c 100%);border:2px solid #b69556;box-shadow:0 4px 6px #57422033,inset 0 0 0 3px #e3c584,inset 0 0 0 5px #a17d3f,inset 1px 2px 5px #fff0bc77;z-index:5;display:flex;align-items:center;justify-content:center;font:500 22px var(--serif);color:#694d25;text-shadow:0 1px 1px #f2dc9e;letter-spacing:-.01em}
+.seal span{font-size:15px;font-style:italic;margin:0 3px}
 .opening .envelope{animation:envelope-leave .75s 3.05s ease-in both}
 .opening .envelope-flap{animation:flap-open 1s .85s cubic-bezier(.4,0,.2,1) both}
 .opening .seal{animation:seal-release .4s .8s ease both}
@@ -141,21 +134,61 @@ h1{font-family:var(--serif);font-size:clamp(72px,8.5vw,116px);font-weight:400;le
 @keyframes seal-release{to{opacity:0;transform:translateY(8px) scale(.9)}}
 @keyframes card-rise{to{transform:translateY(-74%)}}
 @keyframes envelope-leave{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(70px) scale(.96)}}
-@keyframes intro-leave{to{background-color:transparent}}
+@keyframes intro-leave{to{opacity:0}}
 @keyframes texture-leave{to{opacity:0}}
 @keyframes paper-arrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes flowers-left{from{opacity:0;transform:translateX(-45px) rotate(-12deg)}to{opacity:.86;transform:translateX(0) rotate(-5deg)}}
 @keyframes flowers-right{from{opacity:0;transform:scaleX(-1) translateX(-45px) rotate(-12deg)}to{opacity:.86;transform:scaleX(-1) translateX(0) rotate(-5deg)}}
 @keyframes content-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-/* Preserve the photographs' own aspect ratio at every viewport. */
-@media(min-width:1400px){body{padding-top:38px}.stationery{padding-top:68px}}
-@media(max-width:800px){body{padding:16px 14px}.stationery{padding:48px 32px 27px}.photo-collage{min-height:220px;margin-top:35px;gap:6px}.photo{padding:4px}.photo-centre{padding:6px}.floral{width:170px;top:145px}.floral-left{left:-65px}.floral-right{right:-65px}.message{font-size:28px}}
-@media(max-width:600px){body{padding:0;background:var(--paper)}.stationery{padding:43px 24px 26px;min-height:100svh}.paper-border{inset:10px}.paper-border:before{inset:4px}.ornament{margin-bottom:24px;font-size:21px}.eyebrow{font-size:9px;letter-spacing:.25em}h1{font-size:76px}.wedding-date{font-size:10px;gap:14px;margin-top:17px}.wedding-date span+span{padding-left:14px}.photo-collage{min-height:0;grid-template-columns:1fr 1fr;gap:16px 13px;padding:0 6px;margin:34px auto 23px;max-width:410px}.photo{padding:5px}.photo-centre{grid-column:1 / -1;grid-row:2;width:94%;justify-self:center;transform:rotate(-2deg)}.photo-most-left{grid-column:1;grid-row:3;width:100%;transform:rotate(-5deg)}.photo-second-left{grid-column:1;grid-row:1;width:84%;justify-self:end;transform:rotate(-4deg)}.photo-second-right{grid-column:2;grid-row:1;width:84%;justify-self:start;transform:rotate(4deg)}.photo-most-right{grid-column:2;grid-row:3;width:100%;transform:rotate(5deg)}.floral{width:130px;top:160px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}.small-ornament{margin-bottom:12px}.message{font-size:clamp(22px,6.7vw,27px);line-height:1.3;max-width:330px;margin-bottom:23px}.rsvp-link{min-height:50px;padding:15px 27px}.qr-block{width:180px;margin-top:24px}.signature{margin-top:30px}.envelope-names{font-size:27px}.card-names{font-size:40px}.envelope-card{gap:10px}.mini-heading{font-size:7px}.skip{right:18px;top:18px}}
-@media(max-width:600px){.message-intro,.message-date{font-size:clamp(26px,7vw,30px)}.message-names{font-size:clamp(38px,9.4vw,46px);margin:9px 0 10px;letter-spacing:-.025em}}
-/* Keep the venue and RSVP comfortably stacked on narrow screens. */
-@media(max-width:800px){.venue-layout{gap:24px}.venue-section h2{font-size:26px}.map-preview iframe{height:270px}.rsvp-section{gap:32px}.rsvp-section h2{font-size:30px}}
-@media(max-width:680px){.venue-layout{grid-template-columns:1fr;gap:24px;text-align:center}.venue-actions{justify-content:center;margin-top:16px}.venue-section{margin-top:28px;padding-top:28px}.venue-section h2{max-width:380px;margin-inline:auto;font-size:24px}.map-preview{width:100%;max-width:480px;margin-inline:auto;text-align:left}.map-preview iframe{height:260px}.rsvp-section{flex-direction:column;gap:24px;text-align:center;padding-top:28px}.rsvp-section .qr-block{margin:0}.rsvp-copy{max-width:380px}.rsvp-section h2{font-size:32px}.calendar-section{padding:0}.signature{margin-top:34px}}
-@media(max-width:360px){.stationery{padding-inline:23px}.venue-section h2{font-size:23px}.ballroom{font-size:19px}.venue-date{font-size:12px}.venue-details address{font-size:12px}.map-preview iframe{height:240px}.calendar-save summary{padding-inline:14px}.rsvp-section h2{font-size:30px}}
+/* Preserve every photograph and give the longer names room to breathe. */
+@media(min-width:1400px){body{padding-top:38px}.stationery{padding-top:64px}}
+@media(max-width:800px){
+  body{padding:16px 14px}.stationery{padding:48px 32px 27px}
+  .message-names{font-size:60px}.message-intro,.message-date{font-size:28px}
+  .photo-collage{min-height:200px;margin-top:24px;gap:6px}.photo{padding:4px}.photo-centre{padding:6px}
+  .floral{width:170px;top:145px}.floral-left{left:-65px}.floral-right{right:-65px}
+  .venue-layout{gap:24px}.venue-section h2{font-size:26px}.map-preview iframe{height:270px}
+  .rsvp-section{gap:32px;padding-inline:8px}.rsvp-section h2{font-size:32px}
+}
+@media(max-width:680px){
+  .venue-layout{grid-template-columns:1fr;gap:24px;text-align:center}
+  .venue-actions{justify-content:center;margin-top:16px}.venue-section{margin-top:34px;padding-top:30px}
+  .venue-section h2{max-width:380px;margin-inline:auto;font-size:24px}
+  .map-preview{width:100%;max-width:480px;margin-inline:auto;text-align:left}.map-preview iframe{height:260px}
+  .rsvp-section{flex-direction:column;gap:24px;text-align:center;padding-top:30px;padding-inline:0}
+  .rsvp-section .qr-block{margin:0}.rsvp-copy{max-width:380px}
+  .signature{margin-top:42px}
+}
+@media(max-width:600px){
+  body{padding:0;background:var(--paper)}.stationery{padding:40px 26px 24px;min-height:100svh}
+  .paper-border{inset:10px}.paper-border:before{inset:4px}.ornament{margin-bottom:18px;font-size:21px}
+  .message-intro,.message-date{font-size:clamp(25px,6.6vw,29px)}
+  .message-names{font-size:clamp(42px,10.8vw,60px);line-height:1.08;margin:12px 0 14px}
+  .wedding-word{font-size:29px;margin-top:8px}
+  .photo-collage{min-height:0;grid-template-columns:1fr 1fr;gap:16px 13px;padding:0 6px;margin:30px auto 34px;max-width:410px}
+  .photo{padding:5px}.photo-centre{grid-column:1 / -1;grid-row:2;width:94%;justify-self:center;transform:rotate(-2deg)}
+  .photo-most-left{grid-column:1;grid-row:3;width:100%;transform:rotate(-5deg)}
+  .photo-second-left{grid-column:1;grid-row:1;width:84%;justify-self:end;transform:rotate(-4deg)}
+  .photo-second-right{grid-column:2;grid-row:1;width:84%;justify-self:start;transform:rotate(4deg)}
+  .photo-most-right{grid-column:2;grid-row:3;width:100%;transform:rotate(5deg)}
+  .floral{width:130px;top:190px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}
+  .rsvp-link{min-height:52px;padding:15px 27px}.rsvp-section h2{font-size:34px}
+  .qr-block{width:180px}.signature-mark{font-size:68px}.animation-controls{margin-top:22px}
+  .envelope-card{padding:12px 10px;gap:8px}.card-names{font-size:clamp(27px,8.5vw,38px)}
+  .card-names i{font-size:18px;margin:2px 0}.mini-heading{font-size:7px;letter-spacing:.2em}.card-date{font-size:8px}
+  .seal{width:60px;height:60px;left:calc(50% - 30px);font-size:20px}.seal span{font-size:14px}
+  .skip{right:18px;top:18px}
+}
+@media(max-width:360px){
+  .stationery{padding-inline:23px}.venue-section h2{font-size:23px}.ballroom{font-size:19px}
+  .venue-date,.venue-details address{font-size:12px}.map-preview iframe{height:240px}
+  .calendar-save summary{padding-inline:14px}.rsvp-section h2{font-size:32px}
+}
+@media(max-height:560px){
+  .envelope-scene{padding:40px 20px 20px;gap:20px}.envelope-trigger{width:min(350px,70vw,58vh)}
+  .envelope-card{padding:8px;gap:6px}.card-names{font-size:25px}.card-names i{font-size:16px;margin:1px 0}
+  .mini-heading{font-size:6px}.card-date{font-size:7px}.seal{width:48px;height:48px;left:calc(50% - 24px);font-size:17px}.seal span{font-size:11px;margin-inline:2px}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   html:not(.motion-enabled) .falling-petals,html:not(.motion-enabled) .petal-control{display:none}

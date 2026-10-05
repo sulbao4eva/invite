@@ -1,4 +1,4 @@
-# Bao & Sul — Wedding Invitation
+# Baokun & Su Lyn — Wedding Invitation
 
 Published at https://sulbao4eva.github.io/invite/.
 
@@ -30,7 +30,7 @@ Google's place record resolves to the Hilton pin with place ID `ChIJU2DzfLcZ2jER
 
 The Google URL encodes UTC start/end times `20270417T040000Z/20270417T070000Z` and `ctz=Asia/Singapore`. The `.ics` uses `DTSTART;TZID=Asia/Singapore:20270417T120000` / `DTEND;TZID=Asia/Singapore:20270417T150000`, a matching fixed UTC+8 `VTIMEZONE`, RFC-compliant text escaping, CRLF endings, and folded lines. The existing event UID is preserved. Guests confirm saving in their calendar application.
 
-Update the Google Calendar URL and `.ics` together if details change. Do not revert to all-day dates. The invitation message uses larger type than the venue details. The responsive reading order is invitation with its calendar choices directly beneath the message in the same section, venue/map, RSVP/QR, and the B & S closing signature. Desktop uses paired venue/map and RSVP/QR layouts; narrow screens stack them.
+Update the Google Calendar URL and `.ics` together if details change. Do not revert to all-day dates. The invitation message uses larger type than the venue details. The responsive reading order is the full invitation message, photo collage, calendar options, RSVP/QR, venue/map, and the cursive S & B closing signature. The old separate wedding heading is removed so the invitation appears once, prominently at the top. Desktop uses paired venue/map and RSVP/QR layouts; narrow screens stack them.
 
 ## Preview and publish
 
@@ -46,7 +46,7 @@ After activation, a font-readiness wait capped at 500ms starts the existing 5.1-
 
 Reduced-motion visitors also start with the closed envelope; activating it reveals the invitation immediately without motion. They retain a visible **Play animations** opt-in below the heading and in the footer, so the device preference is respected. Leaving during an active sequence safely reveals the invitation; leaving and returning while the envelope is still closed keeps it closed. Links and the envelope have visible keyboard focus, and RSVP links open the public Google Form in a new tab.
 
-Cormorant Garamond is bundled locally under the SIL Open Font License; see `assets/FONT-LICENSE.txt`. Floral artwork, the monogram, and the paper texture are lightweight local SVG files.
+Cormorant Garamond and the small Great Vibes monogram font subset are bundled locally under the SIL Open Font License; see `assets/FONT-LICENSE.txt` and `assets/GREAT-VIBES-LICENSE.txt`. The script font is used only for the legible S & B closing signature. The ivory envelope uses fine gold borders, softly shaded paper folds, and an embossed S & B wax seal; its exterior has no names. The bordered letter uses Baokun & Su Lyn. Floral artwork, the monogram, and the paper texture are lightweight local SVG files.
 
 ## Falling cherry blossoms
 
@@ -77,3 +77,13 @@ The keyboard-accessible **Pause petals** checkbox freezes the canvas and the CSS
 ### Invitation URL migration
 
 The primary repository is `sulbao4eva/invite`, publishing `main / (root)` at `https://sulbao4eva.github.io/invite/`. Google Calendar descriptions and the iCalendar description/URL use this address. The existing event UID is retained, with its revision sequence incremented. Local assets remain relative. The former `bao-sul-wedding` repository hosts a lightweight redirect for already-shared invitation links.
+
+### Luxury invitation revision
+
+The invitation now uses Baokun & Su Lyn throughout its visible content, metadata, and image descriptions, with S & B on the seal, favicon, and closing signature. The reading order is invitation message → photo collage → calendar → RSVP/QR → venue/map → signature. The Google and iCalendar descriptions use the full names; the previously specified exact calendar title and event UID remain unchanged, with sequence 2.
+
+- The clean envelope remains closed without input. Keyboard activation, focus restoration, complete transition, skip, reduced-motion opening, and explicit animation opt-in passed. The letter fits mobile, desktop, and a short landscape viewport.
+- Layout and touch targets passed at 320, 375, 390, 430, 600, 768, 1024, and 1440px with the requested order and no horizontal scrolling. A separate 390px touch-emulation check passed.
+- The calendar download matches the tested file; UTC times resolve to 12:00–15:00 in Asia/Singapore. UTF-8, CRLF, text escaping, line folding, venue details, links, and preserved UID were checked.
+- The existing RSVP QR decoded at 1600, 162, and 180px, and from the actual 163px browser-rendered image. It stays clickable and clear of petals. Text contrast exceeds 4.5:1; petal pause/resume works.
+- These are Chromium browser and viewport/touch-emulation checks. Physical iPhone/Android devices and Safari/iOS app handoff were not tested. External destinations were intercepted in local click tests; the published page receives a separate live browser check.
