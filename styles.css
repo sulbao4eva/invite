@@ -31,14 +31,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .ampersand{font-style:italic;font-size:.8em;font-weight:400;color:var(--gold);display:inline-block;margin:0 .025em}
 .wedding-word{display:block;font:italic 400 34px/1.2 var(--serif);letter-spacing:.01em;margin-top:10px}
 .message-date time{white-space:nowrap}
-.photo-collage{position:relative;width:100%;max-width:1000px;min-height:235px;margin:30px auto 20px;display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr 1fr;gap:9px;align-items:center}
-.photo{margin:0;background:#fffdf8;padding:6px;box-shadow:0 8px 24px #493b2d24;border:1px solid #c8bca03b;min-width:0;position:relative}
-.photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
-.photo-most-left{transform:rotate(-8deg) translateY(24px);z-index:1}
-.photo-second-left{transform:rotate(-4deg) translateY(8px);z-index:2}
-.photo-centre{z-index:3;transform:rotate(-1.5deg);padding:9px}
-.photo-second-right{transform:rotate(4deg) translateY(8px);z-index:2}
-.photo-most-right{transform:rotate(8deg) translateY(24px);z-index:1}
+.photo-collage{position:relative;width:100%;max-width:1000px;margin:32px auto 42px;padding:12px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px 20px;align-items:center}
+.photo{grid-column:span 3;margin:0;background:#fffdf8;padding:7px;box-shadow:0 7px 20px #493b2d18;border:1px solid #c8bca070;min-width:0;position:relative}
+.photo img{display:block;width:100%;height:auto;object-fit:contain}
+.photo-centre{grid-column:2 / span 7;grid-row:1;transform:rotate(-1deg);padding:10px}
+.photo-photobooth{grid-column:9 / span 3;grid-row:1;transform:rotate(2deg);padding:8px}
+.photo-most-left{grid-column:1 / span 3;grid-row:2;transform:rotate(-2.5deg)}
+.photo-second-left{grid-column:4 / span 3;grid-row:2;transform:rotate(1.5deg)}
+.photo-second-right{grid-column:7 / span 3;grid-row:2;transform:rotate(-1.5deg)}
+.photo-most-right{grid-column:10 / span 3;grid-row:2;transform:rotate(2.5deg)}
 .floral{position:absolute;pointer-events:none;width:225px;height:auto;top:125px;z-index:-1;opacity:.86}
 .floral-left{left:-49px;transform:rotate(-5deg)}
 .floral-right{right:-49px;transform:scaleX(-1) rotate(-5deg)}
@@ -148,12 +149,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 @media(max-width:800px){
   body{padding:16px 14px}.stationery{padding:48px 32px 27px}
   .message-names{font-size:60px}.message-intro,.message-date{font-size:28px}
-  .photo-collage{min-height:200px;margin-top:24px;gap:6px}.photo{padding:4px}.photo-centre{padding:6px}
+  .photo-collage{margin-top:26px;gap:22px 16px;padding:10px}.photo{padding:6px}.photo-centre{padding:8px}
   .floral{width:170px;top:145px}.floral-left{left:-65px}.floral-right{right:-65px}
   .venue-layout{gap:24px}.venue-section h2{font-size:26px}.map-preview iframe{height:270px}
   .rsvp-section{gap:32px;padding-inline:8px}.rsvp-section h2{font-size:32px}
 }
 @media(max-width:680px){
+  .photo-collage{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;padding:10px 8px;margin:26px auto 32px;max-width:520px}
+  .photo-centre{grid-column:1 / -1;grid-row:1;transform:rotate(-1deg)}
+  .photo-photobooth{grid-column:2;grid-row:2 / span 2;transform:rotate(1.5deg);padding:6px}
+  .photo-most-left{grid-column:1;grid-row:2;transform:rotate(-2deg)}
+  .photo-second-left{grid-column:1;grid-row:3;transform:rotate(1deg)}
+  .photo-second-right{grid-column:1;grid-row:4;transform:rotate(-1.5deg)}
+  .photo-most-right{grid-column:2;grid-row:4;transform:rotate(2deg)}
   .venue-layout{grid-template-columns:1fr;gap:24px;text-align:center}
   .venue-actions{justify-content:center;margin-top:16px}.venue-section{margin-top:34px;padding-top:30px}
   .venue-section h2{max-width:380px;margin-inline:auto;font-size:24px}
@@ -168,12 +176,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
   .message-intro,.message-date{font-size:clamp(25px,6.6vw,29px)}
   .message-names{font-size:clamp(42px,10.8vw,60px);line-height:1.08;margin:12px 0 14px}
   .wedding-word{font-size:29px;margin-top:8px}
-  .photo-collage{min-height:0;grid-template-columns:1fr 1fr;gap:16px 13px;padding:0 6px;margin:30px auto 34px;max-width:410px}
-  .photo{padding:5px}.photo-centre{grid-column:1 / -1;grid-row:2;width:94%;justify-self:center;transform:rotate(-2deg)}
-  .photo-most-left{grid-column:1;grid-row:3;width:100%;transform:rotate(-5deg)}
-  .photo-second-left{grid-column:1;grid-row:1;width:84%;justify-self:end;transform:rotate(-4deg)}
-  .photo-second-right{grid-column:2;grid-row:1;width:84%;justify-self:start;transform:rotate(4deg)}
-  .photo-most-right{grid-column:2;grid-row:3;width:100%;transform:rotate(5deg)}
+  .photo-collage{gap:16px 14px}.photo{padding:5px}.photo-centre{padding:7px}
   .floral{width:130px;top:190px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}
   .rsvp-link{min-height:52px;padding:15px 27px}.rsvp-section h2{font-size:34px}
   .qr-block{width:180px}.signature-mark{font-size:68px}.animation-controls{margin-top:22px}

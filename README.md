@@ -6,11 +6,11 @@ A small static invitation for 17 April 2027, with a guest-activated envelope ope
 
 ## Update the photographs
 
-The five photographs from `wedding_website/photo_collage/` are stored in `assets/`, each in 640px and 1280px WebP versions. Their desktop order follows the source filenames: `MostLeft` → `second_from_left` → `Center` → `second_from_right` → `MostRight`. The corresponding asset names are `most-left`, `second-from-left`, `center`, `second-from-right`, and `most-right`.
+Six images from the current `wedding_website/photo_collage/` folder are used in the collage. The five distinct landscape photographs are stored in `assets/` in 640px and 1280px WebP versions: `most-left`, `second-from-left`, `center`, `second-from-right`, and `most-right`. The portrait photobooth image, sourced from `Copy of image_2.jpg.png`, adds four moments in one frame and is stored as `photobooth-640.webp` and `photobooth-960.webp`.
 
-On phones, the center image sits in the middle of the collage, the inner left and right photographs sit above it, and the outer left and right photographs sit below it. Their horizontal positions preserve the named left-to-right order while leaving every full photo visible at a comfortable size.
+The horizontal `Copy of image_1.jpg.png` repeats the portrait image's four poses and is intentionally omitted. On desktop, the larger center photograph and portrait photobooth frame lead the composition, followed by four gently angled landscape photographs. On phones, the center photograph spans the top, the portrait frame sits beside two landscapes, and the final pair closes the collage. Every complete photo and the photobooth artwork remain visible without cropping faces.
 
-Replace these files using the same names and dimensions, or update the `src`, `srcset`, `sizes`, dimensions, and descriptive `alt` text in `index.html`. Export the complete image without cropping faces; the layout preserves its 3:2 proportions. Strip camera metadata when exporting and use approximately 88% WebP quality.
+Replace these files using the same names and dimensions, or update the `src`, `srcset`, `sizes`, dimensions, and descriptive `alt` text in `index.html`. Preserve each source's aspect ratio, strip camera metadata, and use responsive WebP versions. The featured pair loads eagerly; supporting images load lazily. Fine ivory frames, gold borders, modest rotations, and soft shadows match the invitation stationery. The opening animation, section order, calendar, RSVP/QR, venue, petals, and signature remain in place.
 
 ## Update RSVP
 
