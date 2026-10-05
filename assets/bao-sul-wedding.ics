@@ -2,15 +2,35 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Bao and Sul//Wedding Invitation//EN
 CALSCALE:GREGORIAN
+METHOD:PUBLISH
 X-WR-TIMEZONE:Asia/Singapore
+BEGIN:VTIMEZONE
+TZID:Asia/Singapore
+X-LIC-LOCATION:Asia/Singapore
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZNAME:SGT
+TZOFFSETFROM:+0800
+TZOFFSETTO:+0800
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
-SUMMARY:Bao & Sul's Wedding
-DTSTART;VALUE=DATE:20270417
-DTEND;VALUE=DATE:20270418
-DTSTAMP:20261004T132706Z
+SUMMARY:Sul & Bao Wedding @Hilton Singapore Orchard L35
+DTSTART;TZID=Asia/Singapore:20270417T120000
+DTEND;TZID=Asia/Singapore:20270417T150000
+DTSTAMP:20261005T075223Z
 UID:bao-sul-wedding-20270417@sulbao4eva.github.io
-DESCRIPTION:You're cordially invited to\nBao & Sul's Wedding\non 17th Apri
- l 2027\n\nhttps://sulbao4eva.github.io/bao-sul-wedding/
+DESCRIPTION:You're warmly invited to celebrate Sul & Bao's wedding!\n\nSat
+ urday\, 17 April 2027\n12:00 PM–3:00 PM (Singapore time\, UTC+8)\nImperi
+ al Ballroom\, Level 35\, Hilton Singapore Orchard\, 333 Orchard Road\, Sin
+ gapore 238867\n\nWedding invitation: https://sulbao4eva.github.io/bao-sul-
+ wedding/\nHotel website: https://www.hilton.com/en/hotels/sinorhi-hilton-s
+ ingapore-orchard/\nGoogle Maps directions: https://www.google.com/maps/dir
+ /?api=1&destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singap
+ ore+238867&destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw
+LOCATION:Imperial Ballroom\, Level 35\, Hilton Singapore Orchard\, 333 Orc
+ hard Road\, Singapore 238867
+STATUS:CONFIRMED
 URL:https://sulbao4eva.github.io/bao-sul-wedding/
 END:VEVENT
 END:VCALENDAR
