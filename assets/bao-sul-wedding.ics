@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Bao and Sul//Wedding Invitation//EN
+PRODID:-//Baokun and Su Lyn//Wedding Invitation//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-TIMEZONE:Asia/Singapore
@@ -18,19 +18,19 @@ BEGIN:VEVENT
 SUMMARY:Sul & Bao Wedding @Hilton Singapore Orchard L35
 DTSTART;TZID=Asia/Singapore:20270417T120000
 DTEND;TZID=Asia/Singapore:20270417T150000
-DTSTAMP:20261005T103440Z
+DTSTAMP:20261005T124720Z
 UID:bao-sul-wedding-20270417@sulbao4eva.github.io
-DESCRIPTION:You're warmly invited to celebrate Sul & Bao's wedding!\n\nSatu
- rday\, 17 April 2027\n12:00 PM–3:00 PM (Singapore time\, UTC+8)\nImperia
- l Ballroom\, Level 35\, Hilton Singapore Orchard\, 333 Orchard Road\, Sing
- apore 238867\n\nWedding invitation: https://sulbao4eva.github.io/invite/\n
- Hotel website: https://www.hilton.com/en/hotels/sinorhi-hilton-singapore-o
- rchard/\nGoogle Maps directions: https://www.google.com/maps/dir/?api=1&de
- stination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867
- &destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw
+DESCRIPTION:You're warmly invited to celebrate Baokun & Su Lyn's wedding!\n
+ \nSaturday\, 17 April 2027\n12:00 PM–3:00 PM (Singapore time\, UTC+8)\nI
+ mperial Ballroom\, Level 35\, Hilton Singapore Orchard\, 333 Orchard Road\
+ , Singapore 238867\n\nWedding invitation: https://sulbao4eva.github.io/inv
+ ite/\nHotel website: https://www.hilton.com/en/hotels/sinorhi-hilton-singa
+ pore-orchard/\nGoogle Maps directions: https://www.google.com/maps/dir/?ap
+ i=1&destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+
+ 238867&destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw
 LOCATION:Imperial Ballroom\, Level 35\, Hilton Singapore Orchard\, 333 Orch
  ard Road\, Singapore 238867
-SEQUENCE:1
+SEQUENCE:2
 STATUS:CONFIRMED
 URL:https://sulbao4eva.github.io/invite/
 END:VEVENT
