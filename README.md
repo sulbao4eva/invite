@@ -1,5 +1,7 @@
 # Bao & Sul — Wedding Invitation
 
+Published at https://sulbao4eva.github.io/invite/.
+
 A small static invitation for 17 April 2027, with a guest-activated envelope opening and RSVP links to Google Forms. No build step, database, analytics, or external fonts. The venue preview uses a Google-hosted map embed; the invitation and directions links remain ordinary HTML.
 
 ## Update the photographs
@@ -32,7 +34,7 @@ Update the Google Calendar URL and `.ics` together if details change. Do not rev
 
 ## Preview and publish
 
-Serve the repository using any static HTTP server. To check the GitHub Pages repository path locally, serve its parent directory and visit `/bao-sul-wedding/`. Every local asset uses a relative path.
+Serve the repository using any static HTTP server. To check the GitHub Pages repository path locally, serve its parent directory and visit `/invite/`. Every local asset uses a relative path.
 
 GitHub Pages should publish from **main / (root)**. `.nojekyll` disables unnecessary Jekyll processing. Commit and push changes to `main` to update the website. There are no secrets or deployment credentials in this repository.
 
@@ -71,3 +73,7 @@ The keyboard-accessible **Pause petals** checkbox freezes the canvas and the CSS
 - Closed-envelope restoration and reduced-motion preference changes do not start or dismiss it. Skip/Escape, immediate opening for reduced motion, explicit animation opt-in, and the script-failure fallback passed.
 - The larger invitation type, smaller venue type, nested calendar disclosure/download, and touch-target bounds passed at 320, 375, 430, 600, 768, 1024, and 1440px in Chromium viewport emulation.
 - Envelope names remain centered within the closed envelope at mobile and desktop widths. Petal resume/pause checks and the unchanged calendar details and RSVP destinations passed.
+
+### Invitation URL migration
+
+The primary repository is `sulbao4eva/invite`, publishing `main / (root)` at `https://sulbao4eva.github.io/invite/`. Google Calendar descriptions and the iCalendar description/URL use this address. The existing event UID is retained, with its revision sequence incremented. Local assets remain relative. The former `bao-sul-wedding` repository hosts a lightweight redirect for already-shared invitation links.
