@@ -109,12 +109,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .opening .envelope-hint{visibility:hidden}
 .envelope{display:block;position:relative;width:100%;aspect-ratio:1.55;opacity:1;transform:translateY(0) scale(1);filter:drop-shadow(0 22px 22px #59472a23);transform-style:preserve-3d}
 .envelope-back{position:absolute;inset:0;background:linear-gradient(135deg,#e8decb,#f4eee2 45%,#dfd1b5);border:1px solid #bca77c;border-radius:3px;box-shadow:inset 0 0 0 4px #f5eedf,inset 0 0 0 5px #cabb9e}
-.envelope-card{position:absolute;left:7%;right:7%;top:5%;height:88%;padding:18px 12px;background:#fffcf5 url('./assets/paper.svg');border:1px solid #bfa67c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;box-shadow:0 2px 14px #44341f14;z-index:2}
+.envelope-card{position:absolute;left:7%;right:7%;top:5%;height:88%;padding:22px 20px;background:#fffcf5 url('./assets/paper.svg');border:1px solid #bfa67c;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 2px 14px #44341f14;z-index:2}
 .envelope-card:before{content:'';position:absolute;inset:6px;border:1px solid #d7c9ae;pointer-events:none}
-.mini-heading{font:9px system-ui;letter-spacing:.24em;color:#726552}
-.card-names{display:flex;flex-direction:column;align-items:center;font:500 43px/.98 var(--serif);color:var(--ink)}
-.card-names i{font-weight:400;font-size:23px;line-height:1.1;color:var(--gold);margin:3px 0}
-.card-date{font:10px system-ui;letter-spacing:.16em;color:#726552}
+.mini-heading{font:400 16px/1.25 var(--serif);letter-spacing:.055em;color:#726552}
+.card-names{display:block;width:100%;margin-top:10px;font:500 40px/1.12 var(--serif);letter-spacing:-.025em;color:var(--ink);text-wrap:balance}
+.card-names>span{white-space:nowrap}
+.card-names i{font-weight:400;font-size:.82em;color:var(--gold)}
+.card-wedding{margin-top:4px;font:italic 400 25px/1.2 var(--serif);color:#655738}
+.card-date{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:14px;font:500 13px/1.3 var(--serif);letter-spacing:.12em;color:#726552}
+.card-date:before{content:'';width:30px;height:1px;background:var(--line)}
 .envelope-pocket{position:absolute;inset:0;z-index:3;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);background:linear-gradient(146deg,#f7f0e3,#ede3d0 49.6%,#d7c5a0 50%,#f1e8d8 50.5%,#fbf5eb 100%);border:1px solid #c5b28d;border-radius:3px;box-shadow:inset 0 -2px 4px #b79d6933}
 .envelope-pocket:after{content:'';position:absolute;inset:7px;border:1px solid #cfb98c66;pointer-events:none}
 .envelope-flap{position:absolute;inset:0;z-index:4;background:linear-gradient(165deg,#fff9ef 0%,#f0e7d6 38%,#d9c7a5 55%);clip-path:polygon(0 0,100% 0,50% 55%);transform-origin:top center;backface-visibility:visible}
@@ -174,8 +177,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
   .floral{width:130px;top:190px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}
   .rsvp-link{min-height:52px;padding:15px 27px}.rsvp-section h2{font-size:34px}
   .qr-block{width:180px}.signature-mark{font-size:68px}.animation-controls{margin-top:22px}
-  .envelope-card{padding:12px 10px;gap:8px}.card-names{font-size:clamp(27px,8.5vw,38px)}
-  .card-names i{font-size:18px;margin:2px 0}.mini-heading{font-size:7px;letter-spacing:.2em}.card-date{font-size:8px}
+  .envelope-card{padding:14px 12px}.card-names{font-size:clamp(23px,7.2vw,34px);margin-top:6px}
+  .mini-heading{font-size:12px;letter-spacing:.045em}.card-wedding{font-size:20px;margin-top:2px}
+  .card-date{font-size:11px;letter-spacing:.08em;margin-top:9px;gap:7px}
   .seal{width:60px;height:60px;left:calc(50% - 30px);font-size:20px}.seal span{font-size:14px}
   .skip{right:18px;top:18px}
 }
@@ -186,8 +190,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 }
 @media(max-height:560px){
   .envelope-scene{padding:40px 20px 20px;gap:20px}.envelope-trigger{width:min(350px,70vw,58vh)}
-  .envelope-card{padding:8px;gap:6px}.card-names{font-size:25px}.card-names i{font-size:16px;margin:1px 0}
-  .mini-heading{font-size:6px}.card-date{font-size:7px}.seal{width:48px;height:48px;left:calc(50% - 24px);font-size:17px}.seal span{font-size:11px;margin-inline:2px}
+  .envelope-card{padding:12px}.card-names{font-size:21px;margin-top:5px}
+  .mini-heading{font-size:11px}.card-wedding{font-size:18px;margin-top:1px}
+  .card-date{font-size:10px;margin-top:6px;gap:5px}.seal{width:48px;height:48px;left:calc(50% - 24px);font-size:17px}.seal span{font-size:11px;margin-inline:2px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
