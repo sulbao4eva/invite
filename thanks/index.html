@@ -13,82 +13,143 @@
     :root{color-scheme:light;--paper:#f8f4ec;--ink:#484438;--muted:#706356;--gold:#876c39;--line:#d9cdb8;--rose:#894c60;--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif}
     *{box-sizing:border-box}
     [hidden]{display:none!important}
-    body{margin:0;padding:24px 24px 36px;color:var(--ink);background:#eee9e0;font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    html{background:#eee9e0}
+    body{margin:0;padding:24px 24px 36px;color:var(--ink);background:radial-gradient(ellipse at 50% 0,#faf5ee,transparent 70%);font:1rem/1.65 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
     button,a{-webkit-tap-highlight-color:transparent}
     a{color:var(--rose);text-underline-offset:4px}
     a:focus-visible,button:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #634a22;outline-offset:5px}
-    .topbar{max-width:960px;margin:0 auto 16px;display:flex;justify-content:space-between;align-items:center;gap:14px}
-    .return-link{display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:#625747;text-decoration:none;gap:8px}
-    .return-link:hover{text-decoration:underline}
+    .topbar{position:relative;z-index:5;max-width:900px;margin:0 auto 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .return-link,.petal-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:#625747;text-decoration:none;font:inherit;font-size:.875rem;gap:8px}
+    .return-link:hover,.petal-toggle:hover{text-decoration:underline;text-underline-offset:4px}
+    .petal-toggle{border:0;background:transparent;cursor:pointer;padding:6px 10px}
     .language{display:flex;gap:3px;padding:3px;border:1px solid #d3c5af;border-radius:30px}
-    .language button{min-height:44px;min-width:62px;border:0;border-radius:24px;background:transparent;color:#625747;font:inherit;font-size:13px;cursor:pointer;padding:7px 12px}
+    .language button{min-height:44px;min-width:62px;border:0;border-radius:24px;background:transparent;color:#625747;font:inherit;font-size:.875rem;cursor:pointer;padding:7px 12px}
     .language button[aria-pressed="true"]{background:#fffaf2;color:var(--ink);box-shadow:0 2px 6px #4c3a2020}
-    .paper{position:relative;isolation:isolate;max-width:900px;margin:auto;background:var(--paper);box-shadow:0 16px 55px #47372012;padding:40px 64px 34px;text-align:center;overflow:hidden;animation:arrive .65s ease-out}
+    .paper{position:relative;isolation:isolate;z-index:1;max-width:900px;margin:auto;background:var(--paper);box-shadow:0 16px 55px #47372012;padding:40px 64px 32px;text-align:center;overflow:hidden}
     .paper:before{content:'';position:absolute;inset:0;background:url('../assets/paper.svg');opacity:.17;z-index:-2;pointer-events:none}
     .border{position:absolute;inset:15px;border:1px solid var(--line);z-index:-1;pointer-events:none}
     .border:after{content:'';position:absolute;inset:5px;border:1px solid #d9cdb860}
-    .floral{position:absolute;z-index:-1;pointer-events:none;user-select:none;width:155px;height:auto;top:50px;left:-43px;opacity:.6;transform:rotate(-12deg)}
-    .floral-right{left:auto;right:-43px;transform:scaleX(-1) rotate(-12deg)}
-    .couple{margin:0 0 14px;color:#705b37;font-size:12px;letter-spacing:.15em;text-transform:uppercase}
-    .ornament{display:flex;align-items:center;justify-content:center;gap:15px;color:var(--gold);margin-bottom:17px}
+    .floral{position:absolute;z-index:-1;pointer-events:none;user-select:none;width:150px;height:auto;top:48px;left:-48px;opacity:.48;transform:rotate(-12deg)}
+    .floral-right{left:auto;right:-48px;transform:scaleX(-1) rotate(-12deg)}
+    .thanks-heading{max-width:560px;margin:0 auto}
+    .couple{margin:0 0 13px;color:#705b37;font-size:.875rem;letter-spacing:.15em;text-transform:uppercase}
+    .ornament{display:flex;align-items:center;justify-content:center;gap:15px;color:var(--gold);margin-bottom:16px}
     .ornament:before,.ornament:after{content:'';width:44px;height:1px;background:var(--line)}
-    .ornament svg{width:24px;height:24px}
-    h1{font:500 clamp(44px,5.4vw,58px)/1.05 var(--serif);letter-spacing:-.025em;margin:0}
-    .subtitle{font:italic 400 clamp(25px,3vw,31px)/1.2 var(--serif);color:#725e40;margin:10px 0 20px}
-    .message{max-width:510px;margin:0 auto;color:#655b4e;font-size:15px;line-height:1.75;text-wrap:pretty}
-    .details{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:28px;max-width:700px;margin:26px auto 24px;padding:24px 0;border-block:1px solid var(--line);text-align:left}
-    .detail{min-width:0}
-    .detail+.detail{padding-left:28px;border-left:1px solid var(--line)}
-    .eyebrow{margin:0 0 9px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#7a6440}
-    .date{margin:0;font:500 27px/1.2 var(--serif);text-wrap:balance}
-    .time,.ballroom{margin:7px 0 0;font-size:14px}
-    .timezone{color:var(--muted);font-size:12px;margin:2px 0 0}
-    .hotel{display:inline-block;font:500 26px/1.2 var(--serif);color:var(--ink);text-decoration:none;text-wrap:balance}
-    .hotel:hover{text-decoration:underline}
-    address{font-style:normal;font-size:13px;color:var(--muted);margin-top:5px}
-    .calendar-save{width:100%;max-width:420px;margin:0 auto;font-size:13px;color:#655738}
-    .calendar-save>summary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;max-width:100%;padding:12px 20px;border:1px solid var(--line);background:#fffdf8;color:#655738;cursor:pointer;list-style:none;line-height:1.5;transition:background .18s}
+    .ornament svg{width:22px;height:22px}
+    h1{font:500 clamp(3rem,5.4vw,3.875rem)/1.05 var(--serif);letter-spacing:-.025em;margin:0}
+    .subtitle{font:italic 400 clamp(1.6rem,3vw,1.95rem)/1.25 var(--serif);color:#725e40;margin:10px 0 18px}
+    .message{max-width:530px;margin:0 auto;color:#655b4e;font-size:1rem;line-height:1.75;text-wrap:pretty}
+    .calendar-group{max-width:530px;margin:24px auto 0}
+    .date{margin:0;font:500 clamp(1.6rem,2.8vw,1.875rem)/1.25 var(--serif);text-wrap:balance}
+    .time{margin:7px 0 19px;font-size:.875rem;color:var(--muted)}
+    .calendar-save{width:100%;max-width:420px;margin:0 auto;font-size:.875rem;color:#655738}
+    .calendar-save>summary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;max-width:100%;padding:12px 22px;border:1px solid #a18b65;background:#fffdf8;color:#655738;cursor:pointer;list-style:none;line-height:1.5;transition:background .18s}
     .calendar-save>summary:hover{background:#eee5d6}
     .calendar-save>summary::-webkit-details-marker{display:none}
     .calendar-icon{width:18px;height:18px;flex:none}
-    .calendar-chevron{font-size:16px;transition:transform .18s}
+    .calendar-chevron{font-size:1rem;transition:transform .18s}
     .calendar-save[open]>.calendar-toggle .calendar-chevron{transform:rotate(180deg)}
     .calendar-options{display:grid;gap:8px;margin:12px auto 0;max-width:380px}
-    .calendar-options a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:12px 15px;border:1px solid var(--line);background:#fffdf8;color:#655738;text-decoration:none;text-align:left;line-height:1.5}
+    .calendar-options a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:12px 15px;border:1px solid var(--line);background:#fffdf8;color:#655738;text-decoration:none;text-align:left;line-height:1.5}
     .calendar-options a:hover{background:#eee5d6}
     .calendar-options strong{display:block;font-weight:500}
-    .calendar-options small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+    .calendar-options small{display:block;font-size:.8125rem;color:var(--muted);margin-top:3px}
     .calendar-options .calendar-file-link{border-color:#a18b65;background:#f5efe3}
     .calendar-help{width:100%;max-width:380px;text-align:left;color:#655b4e;margin:8px auto 0}
-    .calendar-help summary{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 8px;font-size:12px;list-style:none;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+    .calendar-help summary{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 8px;font-size:.875rem;list-style:none;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
     .calendar-help summary::-webkit-details-marker{display:none}
-    .calendar-help p,.calendar-help li{font-size:12px;line-height:1.65}
+    .calendar-help p,.calendar-help li{font-size:.875rem;line-height:1.65}
     .calendar-help ul{padding-left:18px;margin:12px 0}
     .calendar-help li+li{margin-top:9px}
-    .calendar-download{display:inline-flex;align-items:center;min-height:44px;padding:8px 0;color:#6d5936;font-size:12px}
-    .calendar-help label{display:block;font-size:12px;margin:14px 0 6px}
-    .calendar-help textarea{display:block;width:100%;max-width:100%;min-height:160px;resize:vertical;padding:12px;border:1px solid var(--line);border-radius:3px;background:#fffdf8;color:var(--ink);font:12px/1.6 system-ui;white-space:pre-wrap;overflow-wrap:anywhere}
-    .calendar-copy{min-height:44px;margin-top:9px;padding:9px 13px;border:1px solid #a18b65;background:#fffdf8;color:#655738;font:12px/1.5 system-ui;cursor:pointer}
+    .calendar-download{display:inline-flex;align-items:center;min-height:44px;padding:8px 0;color:#6d5936;font-size:.875rem}
+    .calendar-help label{display:block;font-size:.875rem;margin:14px 0 6px}
+    .calendar-help textarea{display:block;width:100%;max-width:100%;min-height:160px;resize:vertical;padding:12px;border:1px solid var(--line);border-radius:3px;background:#fffdf8;color:var(--ink);font:.875rem/1.6 system-ui;white-space:pre-wrap;overflow-wrap:anywhere}
+    .calendar-copy{min-height:44px;margin-top:9px;padding:9px 13px;border:1px solid #a18b65;background:#fffdf8;color:#655738;font:.875rem/1.5 system-ui;cursor:pointer}
     .calendar-copy:disabled{cursor:wait;opacity:.7}
     [data-calendar-status]:empty{display:none}
-    .venue-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;max-width:100%;margin-top:14px;padding:9px 15px;border:1px solid #bbaa8d;background:#fffdf8;color:#655738;font-size:12px;line-height:1.5;text-decoration:none;transition:background .18s}
+    .venue{max-width:720px;margin:32px auto 0;padding-top:26px;border-top:1px solid var(--line)}
+    .venue h2{font:500 2rem/1.2 var(--serif);margin:0 0 20px;color:#725e40}
+    .venue-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center;gap:28px;text-align:left}
+    .venue-copy{min-width:0}
+    .hotel{display:inline-block;font:500 1.875rem/1.15 var(--serif);color:var(--ink);text-decoration:none;text-wrap:balance}
+    .hotel:hover{text-decoration:underline}
+    .ballroom{margin:12px 0 0;font-size:1rem}
+    address{font-style:normal;font-size:.875rem;color:var(--muted);margin-top:6px}
+    .venue-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;max-width:100%;margin-top:20px;padding:11px 17px;border:1px solid #bbaa8d;background:#fffdf8;color:#655738;font-size:.875rem;line-height:1.5;text-decoration:none;transition:background .18s}
     .venue-button:hover{background:#eee5d6}
     .venue-icon{width:17px;height:17px;flex:none}
-    footer{margin-top:32px}
-    .with-love{font:italic 400 22px/1.3 var(--serif);margin:0 0 5px;color:#726248}
-    .signature{display:block;font:400 54px/1.3 'Great Vibes',var(--serif);color:var(--gold);padding:0 10px}
-    html[lang="zh-Hans"] h1{font-family:Georgia,'Songti SC','Noto Serif CJK SC',serif;font-size:clamp(34px,4.4vw,45px);line-height:1.35;letter-spacing:.06em}
-    html[lang="zh-Hans"] .subtitle{font-style:normal;font-size:21px;margin-top:10px}
+    .map-preview{display:block;min-width:0;padding:5px;border:1px solid var(--line);background:#fffdf8;color:#655738;text-decoration:none;box-shadow:0 4px 18px #493b2d0b}
+    .map-preview iframe{display:block;width:100%;height:244px;border:0;pointer-events:none;background:#f1ede5}
+    .map-caption{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 10px;font-size:.875rem;line-height:1.5}
+    .map-preview:hover{border-color:#a18b65}
+    .map-preview:hover .map-caption{text-decoration:underline;text-underline-offset:4px}
+    .signoff{margin:28px auto 0;padding-top:21px;border-top:1px solid var(--line);max-width:720px}
+    .with-love{font:italic 400 1.5rem/1.3 var(--serif);margin:0;color:#726248}
+    .signature{display:block;font:400 3.5rem/1.25 'Great Vibes',var(--serif);color:var(--gold);padding:3px 10px 0}
+    .falling-petals{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none;user-select:none}
+    .petal-path{display:none;position:absolute;top:-55px;left:var(--x);width:calc(var(--size) * 2.4);height:calc(100% + 110px);animation:petal-fall var(--fall) var(--delay) linear infinite;pointer-events:none}
+    .petal-path:nth-of-type(1),.petal-path:nth-of-type(4),.petal-path:nth-of-type(7),.petal-path:nth-of-type(10),.petal-path:nth-of-type(14),.petal-path:nth-of-type(17),.petal-path:nth-of-type(20),.petal-path:nth-of-type(23),.petal-path:nth-of-type(27),.petal-path:nth-of-type(30),.petal-path:nth-of-type(33){display:block}
+    .petal-canvas{display:none;width:100%;height:100%;pointer-events:none}
+    .petals-enhanced .falling-petals{z-index:4}
+    .petals-enhanced .petal-canvas{display:block}
+    .petals-enhanced .petal-path{display:none!important}
+    .petal-path i{display:block;width:100%;aspect-ratio:1/.75;border-radius:80% 15% 70% 30%;background:radial-gradient(ellipse at 25% 20%,#fff6f3 10%,#edd0d0 62%,#d9adb4);box-shadow:inset -1px -1px 2px #b8849518;animation:petal-sway var(--sway) var(--delay) ease-in-out infinite alternate;pointer-events:none}
+    .petals-paused .petal-path,.petals-paused .petal-path i{animation-play-state:paused}
+    @keyframes petal-fall{0%{transform:translate3d(0,0,0);opacity:0}7%,90%{opacity:var(--opacity)}100%{transform:translate3d(var(--drift),100%,0);opacity:0}}
+    @keyframes petal-sway{from{transform:translateX(calc(-1 * var(--sweep))) rotate(var(--turn)) rotateY(calc(-1 * var(--tilt)))}to{transform:translateX(var(--sweep)) rotate(calc(var(--turn) + var(--rotation))) rotateY(var(--tilt))}}
+    html[lang="zh-Hans"] h1{font-family:Georgia,'Songti SC','Noto Serif CJK SC',serif;font-size:clamp(2.2rem,4.4vw,2.8rem);line-height:1.35;letter-spacing:.06em}
+    html[lang="zh-Hans"] .subtitle{font-style:normal;font-size:1.3125rem;margin-top:10px}
     html[lang="zh-Hans"] .couple{letter-spacing:.18em}
-    @keyframes arrive{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
-    @media(max-width:640px){body{padding:12px 12px 22px}.topbar{margin-bottom:10px;gap:8px}.return-link{font-size:12px}.language button{min-width:54px;padding:6px 10px}.paper{padding:34px 29px 28px}.border{inset:10px}.floral{width:108px;left:-52px;top:145px;opacity:.35}.floral-right{left:auto;right:-52px}.couple{font-size:11px;margin-bottom:14px}.message{font-size:15px}.details{grid-template-columns:1fr;gap:24px;margin:24px auto 22px;padding:23px 0;text-align:center}.detail+.detail{padding:0;border:0}.date{font-size:27px}.hotel{font-size:25px}.venue-button{margin-top:12px}.calendar-save>summary{padding:12px 18px}.signature{font-size:50px}footer{margin-top:28px}}
-    @media(max-width:360px){.paper{padding-inline:24px}.topbar{flex-wrap:wrap;row-gap:4px}.date{font-size:25px}.hotel{font-size:24px}.calendar-options a{padding:12px}}
-    @media(prefers-reduced-motion:reduce){.paper{animation:none}.calendar-save>summary,.calendar-chevron,.venue-button{transition:none}}
+    html[lang="zh-Hans"] .venue h2{font-family:Georgia,'Songti SC',serif;font-size:1.75rem}
+    @media(max-width:680px){body{padding:12px 12px 22px}.topbar{gap:4px 8px;margin-bottom:12px}.return-link,.petal-toggle{font-size:.875rem}.petal-toggle{order:3;width:100%;min-height:36px;padding:2px 8px}.language button{min-width:54px;padding:6px 10px}.paper{padding:32px 29px 27px}.border{inset:10px}.floral{width:108px;left:-55px;top:120px;opacity:.3}.floral-right{left:auto;right:-55px}.couple{font-size:.8125rem;margin-bottom:14px}.subtitle{margin-bottom:17px}.calendar-group{margin-top:22px}.date{font-size:1.6875rem}.time{margin-bottom:18px}.venue{margin-top:29px;padding-top:23px}.venue h2{margin-bottom:21px}.venue-layout{grid-template-columns:1fr;gap:22px;text-align:center}.hotel{font-size:1.875rem}.ballroom{margin-top:8px}.venue-button{margin-top:16px}.map-preview{width:100%;max-width:440px;margin:auto}.map-preview iframe{height:250px}.signoff{margin-top:25px;padding-top:20px}.signature{font-size:3.25rem}}
+    @media(max-width:360px){.paper{padding-inline:24px}.return-link{font-size:.8125rem}.language button{font-size:.8125rem;padding:6px 8px;min-width:48px}.calendar-options a{padding:12px}.hotel{font-size:1.75rem}.map-preview iframe{height:235px}}
+    @media(prefers-reduced-motion:reduce){html:not(.motion-enabled) .falling-petals{display:none}.calendar-save>summary,.calendar-chevron,.venue-button{transition:none}}
   </style>
+  <noscript><style>.falling-petals{display:none}</style></noscript>
 </head>
 <body>
+  <div class="falling-petals" aria-hidden="true">
+      <canvas class="petal-canvas" aria-hidden="true"></canvas>
+      <span class="petal-path" style="--x:1.5%;--size:9px;--fall:14.7s;--delay:-0.0s;--drift:10px;--sway:4.1s;--sweep:6px;--turn:-25deg;--rotation:66deg;--tilt:32deg;--opacity:0.60"><i></i></span>
+      <span class="petal-path" style="--x:4.1%;--size:12px;--fall:21.0s;--delay:-13.0s;--drift:7px;--sway:5.6s;--sweep:9px;--turn:30deg;--rotation:145deg;--tilt:37deg;--opacity:0.77"><i></i></span>
+      <span class="petal-path" style="--x:7.0%;--size:12px;--fall:21.3s;--delay:-5.0s;--drift:25px;--sway:5.8s;--sweep:11px;--turn:7deg;--rotation:70deg;--tilt:18deg;--opacity:0.66"><i></i></span>
+      <span class="petal-path" style="--x:9.5%;--size:15px;--fall:16.8s;--delay:-14.4s;--drift:-7px;--sway:4.0s;--sweep:6px;--turn:-5deg;--rotation:-116deg;--tilt:33deg;--opacity:0.70"><i></i></span>
+      <span class="petal-path" style="--x:12.8%;--size:8px;--fall:14.4s;--delay:-6.8s;--drift:22px;--sway:6.3s;--sweep:12px;--turn:-18deg;--rotation:140deg;--tilt:17deg;--opacity:0.54"><i></i></span>
+      <span class="petal-path" style="--x:15.4%;--size:13px;--fall:20.8s;--delay:-1.9s;--drift:-17px;--sway:4.1s;--sweep:12px;--turn:1deg;--rotation:-73deg;--tilt:25deg;--opacity:0.54"><i></i></span>
+      <span class="petal-path" style="--x:17.9%;--size:14px;--fall:21.2s;--delay:-15.0s;--drift:-15px;--sway:4.5s;--sweep:8px;--turn:81deg;--rotation:-95deg;--tilt:32deg;--opacity:0.67"><i></i></span>
+      <span class="petal-path" style="--x:20.6%;--size:15px;--fall:14.9s;--delay:-4.9s;--drift:-17px;--sway:6.2s;--sweep:5px;--turn:-28deg;--rotation:154deg;--tilt:31deg;--opacity:0.56"><i></i></span>
+      <span class="petal-path" style="--x:23.3%;--size:12px;--fall:19.8s;--delay:-18.7s;--drift:12px;--sway:4.0s;--sweep:8px;--turn:-19deg;--rotation:-106deg;--tilt:24deg;--opacity:0.74"><i></i></span>
+      <span class="petal-path" style="--x:26.2%;--size:10px;--fall:19.0s;--delay:-10.7s;--drift:-25px;--sway:3.7s;--sweep:9px;--turn:4deg;--rotation:-67deg;--tilt:19deg;--opacity:0.64"><i></i></span>
+      <span class="petal-path" style="--x:29.3%;--size:15px;--fall:21.2s;--delay:-3.8s;--drift:25px;--sway:4.4s;--sweep:9px;--turn:-40deg;--rotation:67deg;--tilt:32deg;--opacity:0.49"><i></i></span>
+      <span class="petal-path" style="--x:31.9%;--size:8px;--fall:18.9s;--delay:-15.1s;--drift:9px;--sway:5.1s;--sweep:9px;--turn:-11deg;--rotation:-132deg;--tilt:35deg;--opacity:0.48"><i></i></span>
+      <span class="petal-path" style="--x:34.2%;--size:12px;--fall:18.9s;--delay:-7.9s;--drift:-10px;--sway:5.7s;--sweep:6px;--turn:-54deg;--rotation:70deg;--tilt:37deg;--opacity:0.55"><i></i></span>
+      <span class="petal-path" style="--x:37.3%;--size:8px;--fall:20.5s;--delay:-0.7s;--drift:-12px;--sway:6.1s;--sweep:13px;--turn:40deg;--rotation:-83deg;--tilt:23deg;--opacity:0.66"><i></i></span>
+      <span class="petal-path" style="--x:39.9%;--size:16px;--fall:16.4s;--delay:-10.7s;--drift:-7px;--sway:4.4s;--sweep:8px;--turn:-10deg;--rotation:-112deg;--tilt:30deg;--opacity:0.67"><i></i></span>
+      <span class="petal-path" style="--x:42.6%;--size:10px;--fall:16.4s;--delay:-4.4s;--drift:-24px;--sway:5.7s;--sweep:9px;--turn:5deg;--rotation:-154deg;--tilt:30deg;--opacity:0.74"><i></i></span>
+      <span class="petal-path" style="--x:45.4%;--size:11px;--fall:20.7s;--delay:-18.4s;--drift:23px;--sway:3.7s;--sweep:11px;--turn:87deg;--rotation:-144deg;--tilt:21deg;--opacity:0.67"><i></i></span>
+      <span class="petal-path" style="--x:47.8%;--size:11px;--fall:13.8s;--delay:-7.0s;--drift:17px;--sway:4.8s;--sweep:11px;--turn:-25deg;--rotation:102deg;--tilt:17deg;--opacity:0.71"><i></i></span>
+      <span class="petal-path" style="--x:50.8%;--size:18px;--fall:17.9s;--delay:-2.2s;--drift:-25px;--sway:4.8s;--sweep:12px;--turn:-6deg;--rotation:90deg;--tilt:39deg;--opacity:0.66"><i></i></span>
+      <span class="petal-path" style="--x:53.8%;--size:16px;--fall:19.1s;--delay:-14.2s;--drift:13px;--sway:4.0s;--sweep:12px;--turn:-41deg;--rotation:114deg;--tilt:25deg;--opacity:0.75"><i></i></span>
+      <span class="petal-path" style="--x:56.1%;--size:10px;--fall:13.5s;--delay:-4.9s;--drift:-21px;--sway:5.3s;--sweep:5px;--turn:-34deg;--rotation:100deg;--tilt:23deg;--opacity:0.77"><i></i></span>
+      <span class="petal-path" style="--x:59.2%;--size:14px;--fall:21.1s;--delay:-20.6s;--drift:14px;--sway:5.2s;--sweep:8px;--turn:-33deg;--rotation:-83deg;--tilt:20deg;--opacity:0.68"><i></i></span>
+      <span class="petal-path" style="--x:61.8%;--size:16px;--fall:17.0s;--delay:-10.1s;--drift:-12px;--sway:6.0s;--sweep:7px;--turn:72deg;--rotation:138deg;--tilt:23deg;--opacity:0.55"><i></i></span>
+      <span class="petal-path" style="--x:64.7%;--size:16px;--fall:15.1s;--delay:-3.2s;--drift:12px;--sway:5.1s;--sweep:7px;--turn:43deg;--rotation:-150deg;--tilt:30deg;--opacity:0.73"><i></i></span>
+      <span class="petal-path" style="--x:67.4%;--size:15px;--fall:17.7s;--delay:-14.8s;--drift:-24px;--sway:5.4s;--sweep:8px;--turn:71deg;--rotation:-81deg;--tilt:37deg;--opacity:0.70"><i></i></span>
+      <span class="petal-path" style="--x:69.8%;--size:10px;--fall:13.8s;--delay:-6.2s;--drift:-15px;--sway:5.6s;--sweep:13px;--turn:25deg;--rotation:-117deg;--tilt:17deg;--opacity:0.73"><i></i></span>
+      <span class="petal-path" style="--x:73.0%;--size:17px;--fall:15.8s;--delay:-1.1s;--drift:17px;--sway:5.4s;--sweep:8px;--turn:-5deg;--rotation:-151deg;--tilt:28deg;--opacity:0.49"><i></i></span>
+      <span class="petal-path" style="--x:75.5%;--size:14px;--fall:20.5s;--delay:-14.1s;--drift:-14px;--sway:4.3s;--sweep:9px;--turn:44deg;--rotation:138deg;--tilt:34deg;--opacity:0.78"><i></i></span>
+      <span class="petal-path" style="--x:77.9%;--size:11px;--fall:16.4s;--delay:-5.0s;--drift:-7px;--sway:4.7s;--sweep:8px;--turn:54deg;--rotation:73deg;--tilt:39deg;--opacity:0.73"><i></i></span>
+      <span class="petal-path" style="--x:81.0%;--size:9px;--fall:18.1s;--delay:-16.7s;--drift:-12px;--sway:6.4s;--sweep:6px;--turn:67deg;--rotation:-97deg;--tilt:34deg;--opacity:0.54"><i></i></span>
+      <span class="petal-path" style="--x:84.1%;--size:13px;--fall:13.7s;--delay:-7.4s;--drift:13px;--sway:5.0s;--sweep:9px;--turn:-38deg;--rotation:-142deg;--tilt:29deg;--opacity:0.49"><i></i></span>
+      <span class="petal-path" style="--x:86.3%;--size:18px;--fall:15.4s;--delay:-2.4s;--drift:-18px;--sway:4.4s;--sweep:5px;--turn:65deg;--rotation:-67deg;--tilt:33deg;--opacity:0.64"><i></i></span>
+      <span class="petal-path" style="--x:89.3%;--size:9px;--fall:17.6s;--delay:-13.7s;--drift:-9px;--sway:4.7s;--sweep:7px;--turn:-64deg;--rotation:-100deg;--tilt:17deg;--opacity:0.73"><i></i></span>
+      <span class="petal-path" style="--x:92.2%;--size:13px;--fall:18.3s;--delay:-7.2s;--drift:-15px;--sway:3.9s;--sweep:6px;--turn:-6deg;--rotation:-149deg;--tilt:19deg;--opacity:0.60"><i></i></span>
+      <span class="petal-path" style="--x:95.2%;--size:16px;--fall:19.0s;--delay:-0.3s;--drift:9px;--sway:4.1s;--sweep:13px;--turn:65deg;--rotation:93deg;--tilt:36deg;--opacity:0.77"><i></i></span>
+      <span class="petal-path" style="--x:97.2%;--size:13px;--fall:13.6s;--delay:-8.6s;--drift:-22px;--sway:5.0s;--sweep:7px;--turn:31deg;--rotation:-76deg;--tilt:39deg;--opacity:0.60"><i></i></span>
+    </div>
   <nav class="topbar" aria-label="Page controls">
-    <a class="return-link" href="../"><span aria-hidden="true">←</span><span data-en="Back to invitation" data-zh="返回婚礼邀请">Back to invitation</span></a>
+    <a class="return-link" href="../"><span data-en="Back to invitation" data-zh="返回婚礼邀请">Back to invitation</span></a>
+    <button class="petal-toggle" type="button" id="petals-toggle" hidden><span data-en="Pause petals" data-zh="暂停花瓣">Pause petals</span></button>
     <div class="language" role="group" aria-label="Language / 语言" hidden>
       <button type="button" data-language="en" aria-pressed="true" lang="en">English</button>
       <button type="button" data-language="zh" aria-pressed="false" lang="zh-Hans">中文</button>
@@ -98,31 +159,21 @@
     <div class="border" aria-hidden="true"></div>
     <img class="floral" src="../assets/floral.svg" width="270" height="780" alt="" aria-hidden="true">
     <img class="floral floral-right" src="../assets/floral.svg" width="270" height="780" alt="" aria-hidden="true">
-    <p class="couple" data-en="Baokun & Su Lyn" data-zh="葆坤与舒灵">Baokun &amp; Su Lyn</p>
-    <div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15"><path d="M12 20s-8-5.2-8-11.1A4.4 4.4 0 0 1 12 6a4.4 4.4 0 0 1 8 2.9C20 14.8 12 20 12 20Z"></path></svg></div>
-    <h1 data-en="Thank you" data-zh="谢谢您">Thank you</h1>
-    <p class="subtitle" data-en="for being part of our story." data-zh="让这份幸福，更加圆满。">for being part of our story.</p>
+    <header class="thanks-heading">
+      <p class="couple" data-en="Baokun &amp; Su Lyn" data-zh="葆坤与舒灵">Baokun &amp; Su Lyn</p>
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15"><path d="M12 20s-8-5.2-8-11.1A4.4 4.4 0 0 1 12 6a4.4 4.4 0 0 1 8 2.9C20 14.8 12 20 12 20Z"></path></svg></div>
+      <h1 data-en="Thank you" data-zh="谢谢您">Thank you</h1>
+      <p class="subtitle" data-en="for being part of our story." data-zh="让这份幸福，更加圆满。">for being part of our story.</p>
+    </header>
     <p class="message" data-en="Your reply means so much to us. We’ll be in touch with further details closer to the wedding date." data-zh="感谢您为我们的幸福时刻送上心意。婚礼临近时，我们将送上更多详情。">Your reply means so much to us. We’ll be in touch with further details closer to the wedding date.</p>
-    <section class="details" aria-label="Wedding date and venue">
-      <div class="detail">
-        <p class="eyebrow" data-en="A date to remember" data-zh="值得珍藏的日子">A date to remember</p>
-        <p class="date"><time datetime="2027-04-17" data-en="Saturday, 17 April 2027" data-zh="2027年4月17日 · 星期六">Saturday, 17 April 2027</time></p>
-        <p class="time" data-en="12:00 PM–3:00 PM" data-zh="中午12点至下午3点">12:00 PM–3:00 PM</p>
-        <p class="timezone" data-en="Singapore time · UTC+8" data-zh="新加坡时间 · UTC+8">Singapore time · UTC+8</p>
-      </div>
-      <div class="detail">
-        <p class="eyebrow" data-en="The celebration" data-zh="幸福相聚的地点">The celebration</p>
-        <a class="hotel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer" data-en="Hilton Singapore Orchard" data-zh="新加坡乌节希尔顿酒店">Hilton Singapore Orchard</a>
-        <p class="ballroom" data-en="Imperial Ballroom · Level 35" data-zh="Imperial Ballroom · 35楼">Imperial Ballroom · Level 35</p>
-        <address>333 Orchard Road, Singapore 238867</address>
-        <a class="venue-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer"><svg class="venue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-en="Get Directions" data-zh="查看酒店路线">Get Directions</span><span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
+    <section class="calendar-group" aria-label="Wedding date and calendar">
+      <p class="date"><time datetime="2027-04-17" data-en="Saturday, 17 April 2027" data-zh="2027年4月17日 · 星期六">Saturday, 17 April 2027</time></p>
+      <p class="time" data-en="12:00 PM–3:00 PM · Singapore time" data-zh="中午12点至下午3点 · 新加坡时间">12:00 PM–3:00 PM · Singapore time</p>
     <details class="calendar-save">
       <summary class="calendar-toggle"><svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M7 3v4m10-4v4M3.5 10h17m-13 4h3m3 0h3m-9 3h3"></path></svg><span data-en="Save to calendar" data-zh="保存婚礼日期">Save to calendar</span><span class="calendar-chevron" aria-hidden="true">⌄</span></summary>
       <div class="calendar-options">
-      <a class="calendar-file-link" href="../assets/bao-sul-wedding.ics?v=20261007-universal" type="text/calendar"><span><strong data-en="Apple, Outlook &amp; other calendars" data-zh="Apple、Outlook 及其他日历">Apple, Outlook &amp; other calendars</strong><small data-en="Open a calendar file · No Google account needed" data-zh="打开日历文件 · 无需 Google 账号">Open a calendar file · No Google account needed</small></span><span aria-hidden="true">↗</span></a>
-      <a class="google-calendar-link" id="calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Baokun+%26+Su+Lyn%27s+Wedding+%40+Hilton+Singapore+Orchard+L35+12PM&amp;dates=20270417T040000Z%2F20270417T070000Z&amp;ctz=Asia%2FSingapore&amp;stz=Asia%2FSingapore&amp;etz=Asia%2FSingapore&amp;location=Imperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;details=You%27re+warmly+invited+to+celebrate+Baokun+%26+Su+Lyn%27s+wedding%21%0A%0ASaturday%2C+17+April+2027%0A12%3A00+PM%E2%80%933%3A00+PM+%28Asia%2FSingapore%2C+UTC%2B8%29%0AImperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867%0A%0AWedding+invitation%3A+https%3A%2F%2Fsulbao4eva.github.io%2Finvite%2F%0AOfficial+hotel+website%3A+https%3A%2F%2Fwww.hilton.com%2Fen%2Fhotels%2Fsinorhi-hilton-singapore-orchard%2F%0AGoogle+Maps+directions%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3DHilton%2BSingapore%2BOrchard%252C%2B333%2BOrchard%2BRoad%252C%2BSingapore%2B238867%26destination_place_id%3DChIJU2DzfLcZ2jER4WGAnEnqNFw%0A%0AFurther+details+will+be+sent+closer+to+the+wedding+date." target="_blank" rel="noopener noreferrer"><span><strong data-en="Google Calendar" data-zh="Google 日历">Google Calendar</strong><small data-en="Uses your Google account" data-zh="使用您的 Google 账号">Uses your Google account</small></span><span aria-hidden="true">↗</span></a>
+      <a class="calendar-file-link" href="../assets/bao-sul-wedding.ics?v=20261007-universal" type="text/calendar"><span><strong data-en="Apple, Outlook &amp; other calendars" data-zh="Apple、Outlook 及其他日历">Apple, Outlook &amp; other calendars</strong><small data-en="Open a calendar file · No Google account needed" data-zh="打开日历文件 · 无需 Google 账号">Open a calendar file · No Google account needed</small></span></a>
+      <a class="google-calendar-link" id="calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Baokun+%26+Su+Lyn%27s+Wedding+%40+Hilton+Singapore+Orchard+L35+12PM&amp;dates=20270417T040000Z%2F20270417T070000Z&amp;ctz=Asia%2FSingapore&amp;stz=Asia%2FSingapore&amp;etz=Asia%2FSingapore&amp;location=Imperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;details=You%27re+warmly+invited+to+celebrate+Baokun+%26+Su+Lyn%27s+wedding%21%0A%0ASaturday%2C+17+April+2027%0A12%3A00+PM%E2%80%933%3A00+PM+%28Asia%2FSingapore%2C+UTC%2B8%29%0AImperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867%0A%0AWedding+invitation%3A+https%3A%2F%2Fsulbao4eva.github.io%2Finvite%2F%0AOfficial+hotel+website%3A+https%3A%2F%2Fwww.hilton.com%2Fen%2Fhotels%2Fsinorhi-hilton-singapore-orchard%2F%0AGoogle+Maps+directions%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3DHilton%2BSingapore%2BOrchard%252C%2B333%2BOrchard%2BRoad%252C%2BSingapore%2B238867%26destination_place_id%3DChIJU2DzfLcZ2jER4WGAnEnqNFw%0A%0AFurther+details+will+be+sent+closer+to+the+wedding+date." target="_blank" rel="noopener noreferrer"><span><strong data-en="Google Calendar" data-zh="Google 日历">Google Calendar</strong><small data-en="Uses your Google account" data-zh="使用您的 Google 账号">Uses your Google account</small></span></a>
       </div>
       <details class="calendar-help">
         <summary><span data-en="Need help saving the date?" data-zh="需要帮助保存婚礼日期？">Need help saving the date?</span></summary>
@@ -147,12 +198,29 @@ Hotel: https://www.hilton.com/en/hotels/sinorhi-hilton-singapore-orchard/</texta
         <p data-calendar-status role="status" aria-live="polite" aria-atomic="true"></p>
       </details>
     </details>
-    <footer>
+    </section>
+    <section class="venue" aria-labelledby="venue-title">
+      <h2 id="venue-title" data-en="The venue" data-zh="婚礼地点">The venue</h2>
+      <div class="venue-layout">
+        <div class="venue-copy">
+          <a class="hotel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer" data-en="Hilton Singapore Orchard" data-zh="新加坡乌节希尔顿酒店">Hilton Singapore Orchard</a>
+          <p class="ballroom" data-en="Imperial Ballroom · Level 35" data-zh="Imperial Ballroom · 35楼">Imperial Ballroom · Level 35</p>
+          <address>333 Orchard Road<br>Singapore 238867</address>
+          <a class="venue-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer"><svg class="venue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-en="Get directions" data-zh="查看酒店路线">Get directions</span></a>
+        </div>
+        <a class="map-preview" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps directions to Hilton Singapore Orchard">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7883432397703!2d103.8358675!3d1.3019197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19b77cf36053%3A0x5c34ea499c8061e1!2sHilton%20Singapore%20Orchard!5e0!3m2!1sen!2suk!4v1791187580004!5m2!1sen!2suk" title="Google Maps preview pinning Hilton Singapore Orchard" width="480" height="280" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" aria-hidden="true"></iframe>
+          <span class="map-caption" data-en="View on Google Maps" data-zh="在 Google 地图中查看">View on Google Maps</span>
+        </a>
+      </div>
+    </section>
+    <footer class="signoff" aria-label="With Love, S &amp; B">
       <p class="with-love">With Love,</p>
-      <span class="signature" aria-label="S and B">S &amp; B</span>
+      <span class="signature">S &amp; B</span>
     </footer>
   </main>
   <script src="../assets/calendar.js?v=20261007-universal" defer></script>
+  <script src="./petals.js?v=20261007-thanks" defer></script>
   <script>
     (() => {
       'use strict';
