@@ -189,7 +189,7 @@
   // Safari can otherwise clip it or keep an obsolete compositing layer.
   document.body.appendChild(layer);
   const protectedElements = Array.from(document.querySelectorAll(
-    '.invitation-heading, .photo, .message, .small-ornament, .venue-details, .map-preview, .calendar-section, .rsvp-copy, .qr-block, .signature'
+    '.invitation-heading, .photo, .message, .small-ornament, .venue-details, .venue-actions, .map-preview, .calendar-section, .rsvp-copy, .qr-block, .signature'
   ));
   let protectedRects = [];
   function measureContent() {
