@@ -100,7 +100,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .rsvp-section h2{font-size:36px}
 .rsvp-note{font-size:14px;line-height:1.75;margin:0 0 20px;color:#6f6656;text-wrap:pretty}
 .rsvp-section .qr-block{text-align:center}
-.signature{position:relative;z-index:3;color:#826c47;margin-top:46px;padding-top:0}
+.signature{position:relative;z-index:3;max-width:860px;margin-inline:auto;color:#826c47;margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
 .closing-message{font:italic 400 24px/1.4 var(--serif);margin:0 0 8px;color:#6f6656}
 .signature-mark{display:inline-block;font:400 72px/1.25 var(--script);letter-spacing:0;padding:0 15px;color:#826c47}
 .signature i{font-style:normal;font-size:.78em}
@@ -184,7 +184,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
   .map-preview{width:100%;max-width:480px;margin-inline:auto;text-align:left}.map-preview iframe{height:260px}
   .rsvp-section{flex-direction:column;gap:24px;text-align:center;padding-top:30px;padding-inline:0}
   .rsvp-section .qr-block{margin:0}.rsvp-copy{max-width:380px}
-  .signature{margin-top:42px}
+  .signature{margin-top:34px;padding-top:30px}
 }
 @media(max-width:600px){
   body{padding:0;background:var(--paper)}.stationery{padding:40px 26px 24px;min-height:100svh}
