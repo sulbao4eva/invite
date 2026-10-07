@@ -45,10 +45,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .floral-right{right:-49px;transform:scaleX(-1) rotate(-5deg)}
 .rsvp-link{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:15px 28px;border:1px solid #715b37;background:#715b37;color:#fffdf8;text-decoration:none;font-size:14px;font-weight:500;line-height:1.5;letter-spacing:.025em;box-shadow:0 4px 9px #6b543512;transition:background .2s,transform .2s}
 .rsvp-link:hover{background:#6c5737;transform:translateY(-2px)}
-.qr-block{margin:0;width:180px;flex:none}
-.qr-link{display:block;border:1px solid #d7c9ae;background:white;box-shadow:0 4px 18px #493b2d0b;padding:8px}
+.qr-block{margin:0;width:240px;max-width:100%;flex:none}
+.qr-link{display:block;width:180px;max-width:100%;margin-inline:auto;border:1px solid #d7c9ae;background:white;box-shadow:0 4px 18px #493b2d0b;padding:8px}
 .qr-link img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
-.qr-caption{margin:12px 0 0;color:#6f6656;font-size:12px;letter-spacing:.045em;background:var(--paper)}
+.qr-block .rsvp-link{width:100%;margin-top:20px}
 .venue-section,.calendar-section,.rsvp-section{position:relative;z-index:3;max-width:860px;margin-inline:auto}
 .venue-section{margin-top:36px;border-top:1px solid var(--line);padding-top:36px}
 .venue-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
@@ -195,7 +195,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
   .photo-collage{gap:16px 14px}.photo{padding:5px}.photo-centre{padding:7px}
   .floral{width:130px;top:190px;opacity:.64}.floral-left{left:-63px}.floral-right{right:-63px}
   .rsvp-link{min-height:52px;padding:15px 27px}.rsvp-section h2{font-size:34px}
-  .qr-block{width:180px}.signature-mark{font-size:68px}.animation-controls{margin-top:22px}
+  .signature-mark{font-size:68px}.animation-controls{margin-top:22px}
   .envelope-card{padding:14px 12px}.card-names{font-size:clamp(23px,7.2vw,34px);margin-top:6px}
   .mini-heading{font-size:12px;letter-spacing:.045em}.card-wedding{font-size:20px;margin-top:2px}
   .card-date{font-size:11px;letter-spacing:.08em;margin-top:9px;gap:7px}
