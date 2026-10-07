@@ -66,7 +66,7 @@
 
   let canvasAvailable = Boolean(context && sprites.every(Boolean) && particles.length);
   const protectedElements = Array.from(document.querySelectorAll(
-    '.topbar, .thanks-heading, .message, .date, .time, .calendar-save, .venue h2, .venue-copy, .map-preview, .signoff'
+    '.topbar, .thanks-heading, .message, .date, .time, .calendar-save, .venue h2, .venue-copy, .map-preview, .venue-button, .signoff'
   ));
   let protectedRects = [];
   let width = 0;
@@ -194,3 +194,4 @@
   if (document.fonts) document.fonts.ready.then(measureContent).catch(() => {});
   sync();
 })();
+

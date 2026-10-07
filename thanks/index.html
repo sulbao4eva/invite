@@ -73,6 +73,7 @@
     .venue h2{font:500 2rem/1.2 var(--serif);margin:0 0 20px;color:#725e40}
     .venue-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center;gap:28px;text-align:left}
     .venue-copy{min-width:0}
+    .venue-map{min-width:0;text-align:center}
     .hotel{display:inline-block;font:500 1.875rem/1.15 var(--serif);color:var(--ink);text-decoration:none;text-wrap:balance}
     .hotel:hover{text-decoration:underline}
     .ballroom{margin:12px 0 0;font-size:1rem}
@@ -207,12 +208,14 @@ Hotel: https://www.hilton.com/en/hotels/sinorhi-hilton-singapore-orchard/</texta
           <a class="hotel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer" data-en="Hilton Singapore Orchard" data-zh="新加坡乌节希尔顿酒店">Hilton Singapore Orchard</a>
           <p class="ballroom" data-en="Imperial Ballroom · Level 35" data-zh="Imperial Ballroom · 35楼">Imperial Ballroom · Level 35</p>
           <address>333 Orchard Road<br>Singapore 238867</address>
+        </div>
+        <div class="venue-map">
+          <a class="map-preview" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps directions to Hilton Singapore Orchard">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7883432397703!2d103.8358675!3d1.3019197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19b77cf36053%3A0x5c34ea499c8061e1!2sHilton%20Singapore%20Orchard!5e0!3m2!1sen!2suk!4v1791187580004!5m2!1sen!2suk" title="Google Maps preview pinning Hilton Singapore Orchard" width="480" height="280" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" aria-hidden="true"></iframe>
+            <span class="map-caption" data-en="View on Google Maps" data-zh="在 Google 地图中查看">View on Google Maps</span>
+          </a>
           <a class="venue-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer"><svg class="venue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-en="Get directions" data-zh="查看酒店路线">Get directions</span></a>
         </div>
-        <a class="map-preview" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps directions to Hilton Singapore Orchard">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7883432397703!2d103.8358675!3d1.3019197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19b77cf36053%3A0x5c34ea499c8061e1!2sHilton%20Singapore%20Orchard!5e0!3m2!1sen!2suk!4v1791187580004!5m2!1sen!2suk" title="Google Maps preview pinning Hilton Singapore Orchard" width="480" height="280" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" aria-hidden="true"></iframe>
-          <span class="map-caption" data-en="View on Google Maps" data-zh="在 Google 地图中查看">View on Google Maps</span>
-        </a>
       </div>
     </section>
     <footer class="signoff" aria-label="With Love, S &amp; B">
@@ -221,7 +224,7 @@ Hotel: https://www.hilton.com/en/hotels/sinorhi-hilton-singapore-orchard/</texta
     </footer>
   </main>
   <script src="../assets/calendar.js?v=20261007-universal" defer></script>
-  <script src="./petals.js?v=20261007-clean-nav" defer></script>
+  <script src="./petals.js?v=20261007-map-directions" defer></script>
   <script>
     (() => {
       'use strict';
