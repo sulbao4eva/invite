@@ -48,7 +48,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .qr-block{margin:0;width:240px;max-width:100%;flex:none}
 .qr-link{display:block;width:180px;max-width:100%;margin-inline:auto;border:1px solid #d7c9ae;background:white;box-shadow:0 4px 18px #493b2d0b;padding:8px}
 .qr-link img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
-.qr-block .rsvp-link{width:100%;margin-top:20px}
+.qr-block .rsvp-link{width:100%;margin-top:16px}
 .venue-section,.calendar-section,.rsvp-section{position:relative;z-index:3;max-width:860px;margin-inline:auto}
 .venue-section{margin-top:36px;border-top:1px solid var(--line);padding-top:36px}
 .venue-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
@@ -95,10 +95,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
 .calendar-help .calendar-copy{min-height:44px;margin-top:9px;padding:9px 13px;border:1px solid #a18b65;background:#fffdf8;color:#655738;font:12px/1.5 system-ui;cursor:pointer}
 .calendar-help .calendar-copy:disabled{cursor:wait;opacity:.7}
 .calendar-help [data-calendar-status]:empty{display:none}
-.rsvp-section{margin-top:36px;display:flex;align-items:center;justify-content:center;gap:48px;padding:38px 24px 0;border-top:1px solid var(--line);text-align:left}
-.rsvp-copy{max-width:390px;min-width:0}
-.rsvp-section h2{font-size:36px}
-.rsvp-note{font-size:14px;line-height:1.75;margin:0 0 20px;color:#6f6656;text-wrap:pretty}
+.rsvp-section{margin-top:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:36px 24px 0;border-top:1px solid var(--line);text-align:center}
+.rsvp-copy{width:100%;max-width:400px;min-width:0}
+.rsvp-section h2{font-size:36px;margin-bottom:10px}
+.rsvp-note{max-width:360px;font-size:14px;line-height:1.75;margin:0 auto;color:#6f6656;text-wrap:pretty}
 .rsvp-section .qr-block{text-align:center}
 .signature{position:relative;z-index:3;max-width:860px;margin-inline:auto;color:#826c47;margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
 .closing-message{font:italic 400 24px/1.4 var(--serif);margin:0 0 8px;color:#6f6656}
@@ -168,7 +168,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
   .photo-collage{margin-top:26px;gap:22px 16px;padding:10px}.photo{padding:6px}.photo-centre{padding:8px}
   .floral{width:170px;top:145px}.floral-left{left:-65px}.floral-right{right:-65px}
   .venue-layout{gap:24px}.venue-section h2{font-size:26px}.map-preview iframe{height:270px}
-  .rsvp-section{gap:32px;padding-inline:8px}.rsvp-section h2{font-size:32px}
+  .rsvp-section{padding-inline:8px}.rsvp-section h2{font-size:32px}
 }
 @media(max-width:680px){
   .photo-collage{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;padding:10px 8px;margin:26px auto 32px;max-width:520px}
@@ -182,7 +182,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #65
   .venue-actions{margin-top:20px}.venue-section{margin-top:34px;padding-top:30px}
   .venue-section h2{max-width:380px;margin-inline:auto;font-size:24px}
   .map-preview{width:100%;max-width:480px;margin-inline:auto;text-align:left}.map-preview iframe{height:260px}
-  .rsvp-section{flex-direction:column;gap:24px;text-align:center;padding-top:30px;padding-inline:0}
+  .rsvp-section{padding-top:30px;padding-inline:0}
   .rsvp-section .qr-block{margin:0}.rsvp-copy{max-width:380px}
   .signature{margin-top:34px;padding-top:30px}
 }
