@@ -3,11 +3,9 @@
   const root = document.documentElement;
   const canvas = document.querySelector('.petal-canvas');
   const layer = document.querySelector('.falling-petals');
-  const toggle = document.getElementById('petals-toggle');
   const paper = document.querySelector('.paper');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (!canvas || !layer || !toggle || !paper) return;
-  let paused = motion.matches;
+  if (!canvas || !layer || !paper) return;
   function getContext(element) {
     try { return element.getContext('2d'); }
     catch (_) { return null; }
@@ -150,12 +148,8 @@
   }
 
   function sync() {
-    const stopped = paused || document.hidden;
+    const stopped = motion.matches || document.hidden;
     root.classList.toggle('petals-paused', stopped);
-    const label = toggle.querySelector('span');
-    label.dataset.en = paused ? 'Play petals' : 'Pause petals';
-    label.dataset.zh = paused ? '播放花瓣' : '暂停花瓣';
-    label.textContent = root.lang.startsWith('zh') ? label.dataset.zh : label.dataset.en;
     if (stopped || !canvasAvailable) {
       stop();
     } else if (!frame) {
@@ -166,15 +160,7 @@
     }
   }
 
-  toggle.hidden = false;
-  toggle.addEventListener('click', () => {
-    paused = !paused;
-    root.classList.toggle('motion-enabled', motion.matches && !paused);
-    sync();
-  });
   function motionChanged() {
-    root.classList.remove('motion-enabled');
-    paused = motion.matches;
     sync();
   }
   if (motion.addEventListener) motion.addEventListener('change', motionChanged);

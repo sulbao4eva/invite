@@ -19,9 +19,11 @@
     a{color:var(--rose);text-underline-offset:4px}
     a:focus-visible,button:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #634a22;outline-offset:5px}
     .topbar{position:relative;z-index:5;max-width:900px;margin:0 auto 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .return-link,.petal-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:#625747;text-decoration:none;font:inherit;font-size:.875rem;gap:8px}
-    .return-link:hover,.petal-toggle:hover{text-decoration:underline;text-underline-offset:4px}
-    .petal-toggle{border:0;background:transparent;cursor:pointer;padding:6px 10px}
+    .return-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:4px 0;color:#725e40;text-decoration:none;font:500 1.125rem/1.35 var(--serif);gap:8px;letter-spacing:.015em;transition:color .18s}
+    .return-label{text-decoration:underline;text-decoration-color:#a18b65;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-skip-ink:auto}
+    .return-chevron{font:400 1.25rem/1 var(--serif);color:var(--gold)}
+    .return-link:hover{color:var(--rose)}
+    .return-link:hover .return-label{text-decoration-color:currentColor}
     .language{display:flex;gap:3px;padding:3px;border:1px solid #d3c5af;border-radius:30px}
     .language button{min-height:44px;min-width:62px;border:0;border-radius:24px;background:transparent;color:#625747;font:inherit;font-size:.875rem;cursor:pointer;padding:7px 12px}
     .language button[aria-pressed="true"]{background:#fffaf2;color:var(--ink);box-shadow:0 2px 6px #4c3a2020}
@@ -101,9 +103,9 @@
     html[lang="zh-Hans"] .subtitle{font-style:normal;font-size:1.3125rem;margin-top:10px}
     html[lang="zh-Hans"] .couple{letter-spacing:.18em}
     html[lang="zh-Hans"] .venue h2{font-family:Georgia,'Songti SC',serif;font-size:1.75rem}
-    @media(max-width:680px){body{padding:12px 12px 22px}.topbar{gap:4px 8px;margin-bottom:12px}.return-link,.petal-toggle{font-size:.875rem}.petal-toggle{order:3;width:100%;min-height:36px;padding:2px 8px}.language button{min-width:54px;padding:6px 10px}.paper{padding:32px 29px 27px}.border{inset:10px}.floral{width:108px;left:-55px;top:120px;opacity:.3}.floral-right{left:auto;right:-55px}.couple{font-size:.8125rem;margin-bottom:14px}.subtitle{margin-bottom:17px}.calendar-group{margin-top:22px}.date{font-size:1.6875rem}.time{margin-bottom:18px}.venue{margin-top:29px;padding-top:23px}.venue h2{margin-bottom:21px}.venue-layout{grid-template-columns:1fr;gap:22px;text-align:center}.hotel{font-size:1.875rem}.ballroom{margin-top:8px}.venue-button{margin-top:16px}.map-preview{width:100%;max-width:440px;margin:auto}.map-preview iframe{height:250px}.signoff{margin-top:25px;padding-top:20px}.signature{font-size:3.25rem}}
-    @media(max-width:360px){.paper{padding-inline:24px}.return-link{font-size:.8125rem}.language button{font-size:.8125rem;padding:6px 8px;min-width:48px}.calendar-options a{padding:12px}.hotel{font-size:1.75rem}.map-preview iframe{height:235px}}
-    @media(prefers-reduced-motion:reduce){html:not(.motion-enabled) .falling-petals{display:none}.calendar-save>summary,.calendar-chevron,.venue-button{transition:none}}
+    @media(max-width:680px){body{padding:12px 12px 22px}.topbar{gap:4px 8px;margin-bottom:12px}.return-link{font-size:1.0625rem}.language button{min-width:54px;padding:6px 10px}.paper{padding:32px 29px 27px}.border{inset:10px}.floral{width:108px;left:-55px;top:120px;opacity:.3}.floral-right{left:auto;right:-55px}.couple{font-size:.8125rem;margin-bottom:14px}.subtitle{margin-bottom:17px}.calendar-group{margin-top:22px}.date{font-size:1.6875rem}.time{margin-bottom:18px}.venue{margin-top:29px;padding-top:23px}.venue h2{margin-bottom:21px}.venue-layout{grid-template-columns:1fr;gap:22px;text-align:center}.hotel{font-size:1.875rem}.ballroom{margin-top:8px}.venue-button{margin-top:16px}.map-preview{width:100%;max-width:440px;margin:auto}.map-preview iframe{height:250px}.signoff{margin-top:25px;padding-top:20px}.signature{font-size:3.25rem}}
+    @media(max-width:360px){.paper{padding-inline:24px}.return-link{font-size:1rem;gap:6px}.language button{font-size:.8125rem;padding:6px 8px;min-width:48px}.calendar-options a{padding:12px}.hotel{font-size:1.75rem}.map-preview iframe{height:235px}}
+    @media(prefers-reduced-motion:reduce){.falling-petals{display:none}.return-link,.calendar-save>summary,.calendar-chevron,.venue-button{transition:none}}
   </style>
   <noscript><style>.falling-petals{display:none}</style></noscript>
 </head>
@@ -148,8 +150,7 @@
       <span class="petal-path" style="--x:97.2%;--size:13px;--fall:13.6s;--delay:-8.6s;--drift:-22px;--sway:5.0s;--sweep:7px;--turn:31deg;--rotation:-76deg;--tilt:39deg;--opacity:0.60"><i></i></span>
     </div>
   <nav class="topbar" aria-label="Page controls">
-    <a class="return-link" href="../"><span data-en="Back to invitation" data-zh="返回婚礼邀请">Back to invitation</span></a>
-    <button class="petal-toggle" type="button" id="petals-toggle" hidden><span data-en="Pause petals" data-zh="暂停花瓣">Pause petals</span></button>
+    <a class="return-link" href="../"><span class="return-chevron" aria-hidden="true">&lt;</span><span class="return-label" data-en="Back to Invitation" data-zh="返回婚礼邀请">Back to Invitation</span></a>
     <div class="language" role="group" aria-label="Language / 语言" hidden>
       <button type="button" data-language="en" aria-pressed="true" lang="en">English</button>
       <button type="button" data-language="zh" aria-pressed="false" lang="zh-Hans">中文</button>
@@ -220,7 +221,7 @@ Hotel: https://www.hilton.com/en/hotels/sinorhi-hilton-singapore-orchard/</texta
     </footer>
   </main>
   <script src="../assets/calendar.js?v=20261007-universal" defer></script>
-  <script src="./petals.js?v=20261007-thanks" defer></script>
+  <script src="./petals.js?v=20261007-clean-nav" defer></script>
   <script>
     (() => {
       'use strict';
