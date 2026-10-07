@@ -16,7 +16,7 @@
     body{margin:0;padding:24px 24px 36px;color:var(--ink);background:#eee9e0;font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
     button,a{-webkit-tap-highlight-color:transparent}
     a{color:var(--rose);text-underline-offset:4px}
-    a:focus-visible,button:focus-visible{outline:3px solid #634a22;outline-offset:5px}
+    a:focus-visible,button:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #634a22;outline-offset:5px}
     .topbar{max-width:960px;margin:0 auto 16px;display:flex;justify-content:space-between;align-items:center;gap:14px}
     .return-link{display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:#625747;text-decoration:none;gap:8px}
     .return-link:hover{text-decoration:underline}
@@ -49,6 +49,20 @@
     .actions{display:flex;flex-direction:column;align-items:center;gap:11px}
     .calendar-link{display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:15px 24px;min-height:52px;max-width:100%;color:#fffaf7;background:var(--rose);border:1px solid #7b4355;text-decoration:none;font-size:15px;font-weight:500;line-height:1.5;border-radius:5px;box-shadow:0 5px 14px #894c6019;transition:background .18s}
     .calendar-link:hover{background:#743f51}
+    .calendar-hint{margin:0;font-size:12px;line-height:1.6;color:var(--muted)}
+    .calendar-secondary{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;max-width:100%;padding:9px 12px;font-size:14px;line-height:1.5;color:#6d5936;text-underline-offset:4px}
+    .calendar-help{width:100%;max-width:500px;text-align:left;color:#655b4e;margin:-6px 0 0}
+    .calendar-help summary{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 8px;font-size:12px;list-style:none;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+    .calendar-help summary::-webkit-details-marker{display:none}
+    .calendar-help p,.calendar-help li{font-size:12px;line-height:1.65}
+    .calendar-help ul{padding-left:18px;margin:12px 0}
+    .calendar-help li+li{margin-top:9px}
+    .calendar-download{display:inline-flex;align-items:center;min-height:44px;padding:8px 0;color:#6d5936;font-size:12px}
+    .calendar-help label{display:block;font-size:12px;margin:14px 0 6px}
+    .calendar-help textarea{display:block;width:100%;max-width:100%;min-height:160px;resize:vertical;padding:12px;border:1px solid var(--line);border-radius:3px;background:#fffdf8;color:var(--ink);font:12px/1.6 system-ui;white-space:pre-wrap;overflow-wrap:anywhere}
+    .calendar-copy{min-height:44px;margin-top:9px;padding:9px 13px;border:1px solid #a18b65;background:#fffdf8;color:#655738;font:12px/1.5 system-ui;cursor:pointer}
+    .calendar-copy:disabled{cursor:wait;opacity:.7}
+    [data-calendar-status]:empty{display:none}
     .external{flex:none;font-size:19px}
     .directions{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;font-size:14px;color:#6d5936}
     footer{margin-top:18px}
@@ -96,7 +110,31 @@
       </div>
     </section>
     <div class="actions">
-      <a class="calendar-link" id="calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Baokun+%26+Su+Lyn%27s+Wedding+%40+Hilton+Singapore+Orchard+L35+12PM&amp;dates=20270417T040000Z%2F20270417T070000Z&amp;ctz=Asia%2FSingapore&amp;stz=Asia%2FSingapore&amp;etz=Asia%2FSingapore&amp;location=Imperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;details=Join+us+to+celebrate+Baokun+%26+Su+Lyn%27s+wedding.%0A%0ASaturday%2C+17+April+2027%2C+12%3A00+PM%E2%80%933%3A00+PM+%28Asia%2FSingapore%2C+UTC%2B8%29.%0AImperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%0A333+Orchard+Road%2C+Singapore+238867%0A%0AHilton+Singapore+Orchard+%E2%80%94+Google+Maps+directions%3A%0Ahttps%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3DHilton%2BSingapore%2BOrchard%252C%2B333%2BOrchard%2BRoad%252C%2BSingapore%2B238867%26destination_place_id%3DChIJU2DzfLcZ2jER4WGAnEnqNFw%0A%0AOfficial+hotel+website%3A%0Ahttps%3A%2F%2Fwww.hilton.com%2Fen%2Fhotels%2Fsinorhi-hilton-singapore-orchard%2F%0A%0AWedding+invitation%3A%0Ahttps%3A%2F%2Fsulbao4eva.github.io%2Finvite%2F%0A%0AFurther+details+will+be+sent+closer+to+the+wedding+date." target="_blank" rel="noopener noreferrer"><span data-en="click here to save to Google Calendar" data-zh="点击此处添加至 Google 日历">click here to save to Google Calendar</span><span class="external" aria-hidden="true">↗</span></a>
+      <a class="calendar-link calendar-file-link" href="../assets/bao-sul-wedding.ics?v=20261007-universal" type="text/calendar"><span data-en="Save to your calendar" data-zh="保存至您的日历">Save to your calendar</span><span class="external" aria-hidden="true">↗</span></a>
+      <p class="calendar-hint" data-en="Apple, Outlook &amp; compatible apps · No Google account needed" data-zh="Apple、Outlook 及兼容日历应用 · 无需 Google 账号">Apple, Outlook &amp; compatible apps · No Google account needed</p>
+      <a class="calendar-secondary google-calendar-link" id="calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Baokun+%26+Su+Lyn%27s+Wedding+%40+Hilton+Singapore+Orchard+L35+12PM&amp;dates=20270417T040000Z%2F20270417T070000Z&amp;ctz=Asia%2FSingapore&amp;stz=Asia%2FSingapore&amp;etz=Asia%2FSingapore&amp;location=Imperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;details=You%27re+warmly+invited+to+celebrate+Baokun+%26+Su+Lyn%27s+wedding%21%0A%0ASaturday%2C+17+April+2027%0A12%3A00+PM%E2%80%933%3A00+PM+%28Asia%2FSingapore%2C+UTC%2B8%29%0AImperial+Ballroom%2C+Level+35%2C+Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867%0A%0AWedding+invitation%3A+https%3A%2F%2Fsulbao4eva.github.io%2Finvite%2F%0AOfficial+hotel+website%3A+https%3A%2F%2Fwww.hilton.com%2Fen%2Fhotels%2Fsinorhi-hilton-singapore-orchard%2F%0AGoogle+Maps+directions%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3DHilton%2BSingapore%2BOrchard%252C%2B333%2BOrchard%2BRoad%252C%2BSingapore%2B238867%26destination_place_id%3DChIJU2DzfLcZ2jER4WGAnEnqNFw%0A%0AFurther+details+will+be+sent+closer+to+the+wedding+date." target="_blank" rel="noopener noreferrer"><span data-en="click here to save to Google Calendar" data-zh="点击此处添加至 Google 日历">click here to save to Google Calendar</span><span aria-hidden="true">↗</span></a>
+      <details class="calendar-help">
+        <summary><span data-en="Need help saving the date?" data-zh="需要帮助保存婚礼日期？">Need help saving the date?</span></summary>
+        <a class="calendar-download" href="../assets/bao-sul-wedding.ics?v=20261007-universal" download="baokun-su-lyn-wedding.ics" type="text/calendar"><span data-en="Download calendar file (.ics)" data-zh="下载日历文件（.ics）">Download calendar file (.ics)</span> <span aria-hidden="true">↓</span></a>
+        <p data-en="Open or import the file into your preferred calendar, then confirm Save or Add." data-zh="请在您常用的日历中打开或导入文件，然后确认“保存”或“添加”。">Open or import the file into your preferred calendar, then confirm Save or Add.</p>
+        <ul>
+          <li><span data-en="iPhone / iPad: If the file only previews, open it as an attachment in Apple Mail, or copy the details below into a new event." data-zh="iPhone / iPad：若文件只能预览，可在 Apple 邮件中打开附件，或将下方详情复制至新的日历活动。">iPhone / iPad: If the file only previews, open it as an attachment in Apple Mail, or copy the details below into a new event.</span></li>
+          <li><span data-en="Android: Open the downloaded file with a compatible calendar app. If your app cannot import it, copy the details below into a new event." data-zh="Android：使用支持 .ics 的日历应用打开下载的文件。若无法导入，请将下方详情复制至新的日历活动。">Android: Open the downloaded file with a compatible calendar app. If your app cannot import it, copy the details below into a new event.</span></li>
+          <li><span data-en="Computer: In Apple Calendar choose File → Import. In Outlook use its calendar import or Upload from file option." data-zh="电脑：在 Apple 日历中选择“文件 → 导入”；在 Outlook 中使用日历导入或“从文件上传”选项。">Computer: In Apple Calendar choose File → Import. In Outlook use its calendar import or Upload from file option.</span></li>
+        </ul>
+        <p data-en="Using an in-app browser? Open this page in Safari, Chrome or your usual browser if the download does not start." data-zh="若在应用内浏览器中无法下载，请使用 Safari、Chrome 或您常用的浏览器打开此页面。">Using an in-app browser? Open this page in Safari, Chrome or your usual browser if the download does not start.</p>
+        <label for="manual-calendar-details"><span data-en="Wedding details for a new calendar event" data-zh="新建日历活动时可使用以下婚礼详情">Wedding details for a new calendar event</span></label>
+        <textarea id="manual-calendar-details" rows="7" readonly spellcheck="false" wrap="soft">Baokun &amp; Su Lyn's Wedding @ Hilton Singapore Orchard L35 12PM
+Saturday, 17 April 2027
+12:00 PM–3:00 PM Singapore time (UTC+8)
+Imperial Ballroom, Level 35, Hilton Singapore Orchard, 333 Orchard Road, Singapore 238867
+
+Directions: https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw
+Invitation: https://sulbao4eva.github.io/invite/
+Hotel: https://www.hilton.com/en/hotels/sinorhi-hilton-singapore-orchard/</textarea>
+        <button class="calendar-copy" type="button" data-calendar-copy hidden><span data-en="Copy wedding details" data-zh="复制婚礼详情">Copy wedding details</span></button>
+        <p data-calendar-status role="status" aria-live="polite" aria-atomic="true"></p>
+      </details>
       <a class="directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hilton+Singapore+Orchard%2C+333+Orchard+Road%2C+Singapore+238867&amp;destination_place_id=ChIJU2DzfLcZ2jER4WGAnEnqNFw" target="_blank" rel="noopener noreferrer"><span data-en="Directions to Hilton Singapore Orchard" data-zh="查看酒店路线">Directions to Hilton Singapore Orchard</span><span aria-hidden="true">↗</span></a>
     </div>
     <footer>
@@ -106,6 +144,7 @@
     </footer>
     <noscript><p class="noscript" lang="zh-Hans">感谢您的回复。婚礼临近时，我们将送上更多详情。点击上方按钮保存婚礼日期，或查看酒店路线。</p></noscript>
   </main>
+  <script src="../assets/calendar.js?v=20261007-universal" defer></script>
   <script>
     (() => {
       'use strict';
